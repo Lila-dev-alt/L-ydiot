@@ -18,3 +18,8 @@
 /phpunit.xml
 .phpunit.result.cache
 ###< phpunit/phpunit ###
+
+.idea
+/.idea
+.Ds_store
+/.Ds_store
