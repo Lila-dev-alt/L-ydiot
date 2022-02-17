@@ -1,0 +1,31 @@
+html{
+  color: $noir;
+  font-size: $defaultFontSize;
+
+  body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    main{
+      display: flex;
+      flex-direction: column;
+      gap: 4em;
+      section{
+        div.wrapper-section{
+          max-width: $max-width;
+          margin: auto 0;
+          h2, h1{
+            font-family: $displayFont;
+            font-weight: bold;
+            color: $darkMainColor;
+            font-size: 3em;
+          }
+          h1{
+            font-size: 4em;
+          }
+        }
+      }
+    }
+  }
+}
