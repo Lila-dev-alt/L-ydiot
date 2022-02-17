@@ -25,6 +25,9 @@ class Account
     #[ORM\Column(type: 'string', length: 255)]
     private $status;
 
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'accounts')]
+    private $userId;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +77,18 @@ class Account
     public function setStatus(string $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getUserId(): ?User
+    {
+        return $this->userId;
+    }
+
+    public function setUserId(?User $userId): self
+    {
+        $this->userId = $userId;
 
         return $this;
     }
