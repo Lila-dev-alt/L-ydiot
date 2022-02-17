@@ -1,0 +1,38 @@
+header{
+  padding: 1em;
+  div.wrapper-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: $max-width;
+    margin: 0 auto;
+    a.logo{
+      display: block;
+      max-width: 150px;
+      width: 100%;
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+    nav{
+      ul{
+        display: flex;
+        align-items: center;
+        gap: 2em;
+        li{
+          a{
+            text-decoration: none;
+            color: $noir;
+            &.btn{
+              color: $blanc;
+              font-weight: normal;
+            }
+          }
+
+        }
+      }
+    }
+  }
+}

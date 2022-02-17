@@ -1,3 +1,133 @@
 @import "vendors/reset.css";
+@import url("https://use.typekit.net/wvp3qso.css");
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://example.com/MaterialIcons-Regular.eot);
+  /* For IE6-8 */
+  src: local("Material Icons"), local("MaterialIcons-Regular"), url(https://example.com/MaterialIcons-Regular.woff2) format("woff2"), url(https://example.com/MaterialIcons-Regular.woff) format("woff"), url(https://example.com/MaterialIcons-Regular.ttf) format("truetype");
+}
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
+
+html {
+  color: #000000;
+  font-size: 20px;
+}
+html body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+html body main {
+  display: flex;
+  flex-direction: column;
+  gap: 4em;
+}
+html body main section div.wrapper-section {
+  max-width: 1440px;
+  margin: auto 0;
+}
+html body main section div.wrapper-section h2, html body main section div.wrapper-section h1 {
+  font-family: degular, sans-serif;
+  font-weight: bold;
+  color: #00286b;
+  font-size: 3em;
+}
+html body main section div.wrapper-section h1 {
+  font-size: 4em;
+}
+
+.btnFlat {
+  font-family: degular, sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+  color: #ffffff;
+  background-color: #0180ff;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+  max-width: 360px;
+  width: 100%;
+  transition: all 0.25s ease-in-out;
+}
+.btnFlat:hover, .btnFlat:focus {
+  background-color: #0067cd;
+}
+
+.btn {
+  font-family: degular, sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+  color: #ffffff;
+  background-color: #0180ff;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5em 1em;
+  transition: all 0.25s ease-in-out;
+}
+.btn:hover, .btn:focus {
+  background-color: #0067cd;
+}
+
+header {
+  padding: 1em;
+}
+header div.wrapper-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+header div.wrapper-header a.logo {
+  display: block;
+  max-width: 150px;
+  width: 100%;
+}
+header div.wrapper-header a.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+header div.wrapper-header nav ul {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+}
+header div.wrapper-header nav ul li a {
+  text-decoration: none;
+  color: #000000;
+}
+header div.wrapper-header nav ul li a.btn {
+  color: #ffffff;
+  font-weight: normal;
+}
 
 /*# sourceMappingURL=styles.css.map */
