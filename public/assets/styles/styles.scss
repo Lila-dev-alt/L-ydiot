@@ -1,7 +1,15 @@
 // Vendors
 @import "vendors/reset.css";
 
+// Fonts
+@import "../fonts/fonts";
+
 // Tools
 @import "tools/variables";
+@import "tools/globals";
+@import "tools/classes";
 
 // Inc
+@import "inc/footer";
+@import "inc/header";
+@import "inc/homepage";
