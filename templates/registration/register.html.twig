@@ -4,18 +4,33 @@
 
 {% block body %}
     <section class="register">
-        <div class="wrapper-section">
-            <h1>S'inscrire</h1>
+        <div class="wrapper-sectio">
+            <h1 class="text-4xl uppercase font-bold mb-[2rem]">S'inscrire</h1>
+            <h2 class=" text-sm uppercase font-bold"> Vous souhaitez rejoindre Lydiot et pourvoir acceder à plusieurs comptes et effectuer des transactions entre amis ? Inscrivez vous dès maintenant </h2>
 
-            {{ form_start(registrationForm) }}
-            {{ form_row(registrationForm.email) }}
-            {{ form_row(registrationForm.plainPassword, {
-                label: 'Password'
-            }) }}
-            {{ form_row(registrationForm.agreeTerms) }}
+           <div class="m-[3rem]">
+               {{ form_start(registrationForm) }}
 
-            <button type="submit" class="btn">Register</button>
-            {{ form_end(registrationForm) }}
+                 <div class="my-[1rem]">
+                    <p class="block mb-2 text-sm font-bold text-gray-700">{{ form_label(registrationForm.email) }} </p>
+                     {{ form_widget(registrationForm.email,  { 'attr': {'class': 'w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'} }) }}
+                 </div>
+
+                 <div class="my-[1rem]">
+                    <p class="block mb-2 text-sm font-bold text-gray-700">{{ form_label(registrationForm.plainPassword) }}</p>
+                     {{ form_widget(registrationForm.plainPassword,  { 'attr': {'class': 'w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'} }) }}
+                 </div>
+
+                 <p>
+                     {{ form_widget(registrationForm.agreeTerms)}}
+                     {{ form_label(registrationForm.agreeTerms)}}
+                 </p>
+
+
+                 <button type="submit" class="btn my-[1rem] mx-auto block ">S'inscrire</button>
+               {{ form_end(registrationForm) }}
+           </div>
+
         </div>
     </section>
 {% endblock %}
