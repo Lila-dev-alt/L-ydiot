@@ -28,6 +28,9 @@ class Account
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'accounts')]
     private $userId;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $nom_compte;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +92,18 @@ class Account
     public function setUserId(?User $userId): self
     {
         $this->userId = $userId;
+
+        return $this;
+    }
+
+    public function getNomCompte(): ?string
+    {
+        return $this->nom_compte;
+    }
+
+    public function setNomCompte(string $nom_compte): self
+    {
+        $this->nom_compte = $nom_compte;
 
         return $this;
     }

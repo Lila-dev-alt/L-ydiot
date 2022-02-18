@@ -23,6 +23,7 @@ class AccountsController extends AbstractController
     public function singleAccount(ManagerRegistry $doctrine, $id): Response
     {
         $accountSingle = $doctrine->getRepository(Account::class)->find($id);
+        //dump($accountSingle); die();
         return $this->render('accounts/single.html.twig', [
             "account" => $accountSingle
         ]);

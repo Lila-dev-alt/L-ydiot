@@ -10,9 +10,9 @@
                 <li class="add-account"><a href="/account/create"><span class="material-icons">add</span>Ajouter un compte</a></li>
                 {% for accounts in accountList %}
                     <li>
-                        <a href="/accounts/{{ accounts.accountId }}">
+                        <a href="{{ path('accounts') }}/{{ accounts.id }}">
                             <bdi class="montant">{{accounts.money}}<span class="devise">€</span></bdi>
-                            {#<span class="nom-compte">{{ accounts.nom }}</span>#}
+                            <span class="nom-compte">{{ accounts.nomCompte }}</span>
                         </a>
                     </li>
                 {% endfor %}
