@@ -9,6 +9,9 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Positive;
 
 class AddAccountType extends AbstractType
 {
@@ -19,11 +22,27 @@ class AddAccountType extends AbstractType
             ->add('nomCompte', TextType::class,[
               'attr' => ['placeholder' => 'Cagnotte anniversaire'],
               'label' => 'Nom du compte',
+              'constraints' => [
+              new NotBlank([
+                  'message' => 'Merci de remplir ce champ',
+              ]),
+              new  Length([
+                  'min' => 1,
+                  'minMessage' => 'Attention le champ doit contenir au moins 1 charactère'
+              ]),
+              ],
           ])
             ->add('money', TextType::class,[
                 'attr' => ['placeholder' => '200€'],
                 'label' => 'Montant sur le compte',
-                'empty_data' => '0'
+                 'constraints' => [
+                    new  Positive([
+                        'message' => 'Attention le montant doit être au minimum de 0'
+                    ]),
+                     new NotBlank([
+                         'message' => 'Merci de remplir ce champ',
+                     ]),
+                    ],
             ])
           //  ->add('dateCreation')
           //  ->add('status')
