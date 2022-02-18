@@ -11,6 +11,16 @@
            <div class="m-[3rem]">
                {{ form_start(registrationForm) }}
 
+               <div class="my-[1rem]">
+                   <p class="block mb-2 text-sm font-bold text-gray-700">{{ form_label(registrationForm.surname) }} </p>
+                   {{ form_widget(registrationForm.surname,  { 'attr': {'class': 'w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'} }) }}
+               </div>
+
+               <div class="my-[1rem]">
+                   <p class="block mb-2 text-sm font-bold text-gray-700">{{ form_label(registrationForm.lastname) }} </p>
+                   {{ form_widget(registrationForm.lastname,  { 'attr': {'class': 'w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'} }) }}
+               </div>
+
                  <div class="my-[1rem]">
                     <p class="block mb-2 text-sm font-bold text-gray-700">{{ form_label(registrationForm.email) }} </p>
                      {{ form_widget(registrationForm.email,  { 'attr': {'class': 'w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'} }) }}
