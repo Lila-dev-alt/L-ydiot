@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lydiot | {{ account.nom }}{% endblock %}
+
+{% block body %}
+    <section class="accounts">
+        <div class="wrapper-section">
+            <h1>{{ account.nom }}</h1>
+            <bdi>{{ account.montant }} <span class="devise">€</span></bdi>
+            <a href="/accounts/{{ account.id }}/virement">Ajouter de l'argent</a>
+            <a href="/accounts/{{ account.id }}/transaction">Faire une transaction</a>
+            <a href="/accounts/{{ account.id }}/delete">Supprimer le compte</a>
+        </div>
+    </section>
+{% endblock %}

@@ -1,50 +1,46 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="shortcut icon" type="image/png" href="/assets/images/logo/favicon-lydio.png"/>
-        <link rel="stylesheet" href="/assets/styles/styles.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="shortcut icon" type="image/png" href="/assets/images/logo/favicon-lydio.png"/>
+    <link rel="stylesheet" href="/assets/styles/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-    <header>
-        <div class="wrapper-header">
-            <a href="/" class="logo"><img src="/assets/images/logo/logo-lydio.svg" alt="Logo Lydio"></a>
-            <nav>
-                <ul>
-                    {% if app.user %}
-                        <li><a href="" title="Se connecter">Faire un viremement</a></li>
-                        <li><a href="" title="Mes comptes">Mes comptes</a></li>
-                        <li><a href="{{ path('app_logout') }}" class="btn" title="Se déconnecter">Se déconnecter</a></li>
-                    {% else %}
-                      <!--  <li><a href="" title="Se connecter">Faire un viremement</a></li>
-                        <li><a href="" title="Mes comptes">Mes comptes</a></li> -->
-                        <li><a href="{{ path('login') }}" class="btn" title="Se connecter">Se connecter</a></li>
-                        <li><a href="{{ path('app_register') }}" class="btn" title="Se connecter">S'enregistrer</a></li>
-                    {% endif %}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+<body>
+<header>
+    <div class="wrapper-header">
+        <a href="/" class="logo"><img src="/assets/images/logo/logo-lydio.svg" alt="Logo Lydio"></a>
+        <nav>
+            <ul>
+                {% if app.user %}
+                    <li><a href="/accounts" title="Mes comptes">Mes comptes</a></li>
+                    <li><a href="/logout" class="btn" title="Se déconnecter">Se déconnecter</a></li>
+                {% else %}
+                    <li><a href="/login" class="btn" title="Se connecter">Se connecter</a></li>
+                {% endif %}
 
-                </ul>
-            </nav>
-        </div>
-    </header>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main>
+    {% block body %}{% endblock %}
+</main>
+<footer>
+    <div class="wrapper-footer">
 
-
-        {% block body %}{% endblock %}
-    <footer>
-        <div class="wrapper-footer">
-
-        </div>
-    </footer>
-    </body>
+    </div>
+</footer>
+</body>
 </html>
