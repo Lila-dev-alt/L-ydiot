@@ -4,28 +4,30 @@
 
 {% block body %}
     <section class="login">
-        <div class="wrapper-section">
-            <h1>Se connecter</h1>
+        <div class="wrapper-sectio">
+            <h1 class="text-4xl uppercase font-bold mb-[2rem]">Se connecter</h1>
+            <h2 class=" text-sm uppercase font-bold"> Connectez-vous pour consulter vos comptes bancaires, en créer de nouveau et effectuer des transactions </h2>
             {% if error %}
                 <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
 
             <form action="{{ path('login') }}" method="post">
-                <div>
-                    <label for="username">Email:</label>
-                    <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+                <div class="my-[1rem]">
+                    <label for="username" class="block mb-2 text-sm font-bold text-gray-700">E-mail:</label>
+                    <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="text" id="username" name="_username" value="{{ last_username }}"/>
                 </div>
 
-                <div>
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="_password"/>
+                <div class="my-[1rem]">
+                    <label for="password" class="block mb-2 text-sm font-bold text-gray-700"> Mot de passe:</label>
+                    <input type="password" id="password" name="_password" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"/>
                 </div>
                 <div>
-                    <button type="submit">login</button>
+                    <button class="btn my-[1rem] mx-auto block " type="submit">Se connecter</button>
                 </div>
 
             </form>
-            <a href="{{ path('app_register') }}">Enregistrez-vous</a>
+            <p class="text-xs font-semibold mb-[1rem]"> Nouveau chez Lydiot ? créez un compte et rejoignez la communauté</p>
+            <a class="btn" href="{{ path('app_register') }}">S'inscrire</a>
         </div>
     </section>
 {% endblock %}
