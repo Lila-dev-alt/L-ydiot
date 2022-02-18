@@ -24,10 +24,10 @@
         <nav>
             <ul>
                 {% if app.user %}
-                    <li><a href="/accounts" title="Mes comptes">Mes comptes</a></li>
-                    <li><a href="/logout" class="btn" title="Se déconnecter">Se déconnecter</a></li>
+                    <li><a href="{{ path('accounts') }}" title="Mes comptes">Mes comptes</a></li>
+                    <li><a href="{{ path('app_logout') }}" class="btn" title="Se déconnecter">Se déconnecter</a></li>
                 {% else %}
-                    <li><a href="/login" class="btn" title="Se connecter">Se connecter</a></li>
+                    <li><a href="{{ path('login') }}" class="btn" title="Se connecter">Se connecter</a></li>
                 {% endif %}
 
             </ul>

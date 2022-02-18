@@ -18,6 +18,7 @@ class AddAccountType extends AbstractType
             ->add('dateCreation')
             ->add('status')
             ->add('userId')
+            ->add('nomCompte')
             ->add('submit', SubmitType::class)
         ;
     }
