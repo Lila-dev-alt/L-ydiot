@@ -7,6 +7,7 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="shortcut icon" type="image/png" href="/assets/images/logo/favicon-lydio.png"/>
         <link rel="stylesheet" href="/assets/styles/styles.css">
+        <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
@@ -22,15 +23,15 @@
         <div class="wrapper-header">
             <a href="/" class="logo"><img src="/assets/images/logo/logo-lydio.svg" alt="Logo Lydio"></a>
             <nav>
-                <ul>
+                <ul class=" text-xs uppercase font-semibold">
                     {% if app.user %}
-                        <li><a href="" title="Se connecter">Faire un viremement</a></li>
-                        <li><a href="" title="Mes comptes">Mes comptes</a></li>
-                        <li><a href="" class="btn" title="Se déconnecter">Se déconnecter</a></li>
+                        <li><a href="" class="transition duration-150 px-[0.5rem] py-[0.5rem] rounded-full hover:bg-[#E6E8FF] " title="Se connecter">Faire un viremement</a></li>
+                        <li><a href=""  class="transition duration-150 px-[0.5rem] py-[0.5rem] rounded-full hover:bg-[#E6E8FF] " title="Mes comptes">Mes comptes</a></li>
+                        <li><a href="" class="transition duration-150 btn px-[0.5rem] py-[0.5rem] rounded-full hover:bg-[#E6E8FF]" title="Se déconnecter">Se déconnecter</a></li>
                     {% else %}
-                        <li><a href="" title="Se connecter">Faire un viremement</a></li>
-                        <li><a href="" title="Mes comptes">Mes comptes</a></li>
-                        <li><a href="" class="btn" title="Se connecter">Se connecter</a></li>
+                        <li><a href="" class="transition duration-150 px-[0.5rem] py-[0.5rem] rounded-full hover:bg-[#E6E8FF] " title="Se connecter">Faire un viremement</a></li>
+                        <li><a href="" class="transition duration-150 px-[0.5rem] py-[0.5rem] rounded-full hover:bg-[#E6E8FF] " title="Mes comptes">Mes comptes</a></li>
+                        <li><a href="" class="transition duration-150 btn font-semibold" title="Se connecter">Se connecter</a></li>
                     {% endif %}
 
                 </ul>
