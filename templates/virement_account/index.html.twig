@@ -5,9 +5,10 @@
 {% block body %}
     <section class="accounts">
         <div class="wrapper-section">
-            <h1>Faire un virement</h1>
-            {{ form_errors(form) }}
+            <h1>Ajouter de l'argent</h1>
             {{ form_start(form) }}
+          {{ form_widget(form.money) }}
+         <div class="text-xs text-red-500">{{ form_errors(form.money) }} </div>
             {{ form_end(form) }}
         </div>
     </section>
