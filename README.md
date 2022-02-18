@@ -28,7 +28,7 @@ Faire les migrations :
 
 ```php bin/console doctrine:migrations:migrate```
 
-Enfin, lancer le serveur :
+Enfin, lancer e serveur :
 
 ```symfony server:start -d```
 
