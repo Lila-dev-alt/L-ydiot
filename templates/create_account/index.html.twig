@@ -3,12 +3,22 @@
 {% block title %}Lydiot | Ajouter un compte{% endblock %}
 
 {% block body %}
-    <h1> Créer mon compte client</h1>
-
+    <h1 class="text-4xl uppercase font-bold mb-[2rem]"> Créer mon compte Bancaire</h1>
+    <h2 class=" text-sm uppercase font-bold"> Ajoutez un nouveau compte bancaire en ligne afin de créer vos propres cagnottes, gérer vos budgets, ou effectuer des virements entre amis.  </h2>
     <div>
         {{ form_errors(form) }}
     </div>
     {{ form_start(form) }}
+    <div class="my-[1rem]">
+        <p class="block mb-2 text-sm font-bold text-gray-700">{{ form_label(form.nomCompte) }} </p>
+        {{ form_widget(form.nomCompte,  { 'attr': {'class': 'w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'} }) }}
+    </div>
+
+    <div class="my-[1rem]">
+        <p class="block mb-2 text-sm font-bold text-gray-700">{{ form_label(form.money) }} </p>
+        {{ form_widget(form.money,  { 'attr': {'class': 'w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'} }) }}
+    </div>
+
     {{ form_end(form) }}
 
 {% endblock %}
