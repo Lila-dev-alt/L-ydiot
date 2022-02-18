@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Account;
 use App\Form\AddAccountType;
+use App\Form\AddMoneyType;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -57,5 +58,30 @@ class CreateAccountController extends AbstractController
         $accountSingle ->setStatus('archive');
         $entityManager->flush();
         return $this->redirectToRoute("accounts");
+    }
+
+    #[Route('/accounts/virement/{id}', name: 'virement-account')]
+    //public function index(): Response
+    public function virement(ManagerRegistry $doctrine, Request $request,EntityManagerInterface $entityManager,  $id): Response
+    {
+        $entityManager = $doctrine->getManager();
+        $accountSingle = $doctrine->getRepository(Account::class)->find($id);
+        $form = $this->createForm(AddMoneyType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            //dump($accountSingle ->getMoney());
+            //dump($form->getData()["money"]);die();
+
+            $accountSingle->setMoney((int)$form->getData()["money"] + $accountSingle ->getMoney());
+
+            $entityManager->persist($accountSingle);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('accounts');
+        }
+        return $this->renderForm('virement_account/index.html.twig', [
+            'form' => $form,
+        ]);
     }
 }

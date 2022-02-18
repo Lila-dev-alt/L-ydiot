@@ -1,0 +1,44 @@
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  div{
+    display: flex;
+    align-items: flex-end;
+    gap: 1em;
+    max-width: 250px;
+    border-radius: 4px;
+    label{
+      font-family: $displayFont;
+      font-weight: bold;
+      color: $darkMainColor;
+    }
+    input{
+      background-color: $blanc;
+      border-bottom: 2px solid $noir;
+      padding: .5em 1em;
+    }
+    &:last-of-type{
+      button{
+        font-family: $displayFont;
+        font-weight: bold;
+        font-size: 1em;
+        color: $blanc;
+        background-color: $mainColor;
+        border-radius: 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: .5em 1em;
+        max-width: 360px;
+        width: 100%;
+        transition: all 0.25s ease-in-out;
+        border: none;
+        cursor: pointer;
+        &:hover, &:focus{
+          background-color: darken($mainColor, 10);
+        }
+      }
+    }
+  }
+}

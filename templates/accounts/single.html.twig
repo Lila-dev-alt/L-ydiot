@@ -7,9 +7,11 @@
         <div class="wrapper-section">
             <h1>{{ account.nomCompte }}</h1>
             <bdi>{{ account.money }} <span class="devise">€</span></bdi>
-            <a href="{{ path('accounts') }}/{{ account.id }}/virement">Ajouter de l'argent</a>
-            <a href="{{ path('accounts') }}/{{ account.id }}/transaction">Faire une transaction</a>
-            <a href="{{ path('archive-account', {accountId: account.accountId}) }}">Supprimer le compte</a>
+            <div class="liens">
+                <a href="{{ path('accounts') }}/virement/{{ account.id }}"><span class="material-icons">account_balance_wallet</span>Ajouter de l'argent</a>
+                <a href="{{ path('accounts') }}/transaction/{{ account.id }}"><span class="material-icons">currency_exchange</span>Faire une transaction</a>
+                <a href="{{ path('archive-account', {accountId: account.accountId}) }}"><span class="material-icons">delete</span>Supprimer le compte</a>
+            </div>
         </div>
     </section>
 {% endblock %}
