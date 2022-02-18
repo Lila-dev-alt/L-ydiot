@@ -7,6 +7,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Uid\Uuid;
 
 class AccountsController extends AbstractController
 {
@@ -19,11 +20,13 @@ class AccountsController extends AbstractController
         ]);
     }
 
-    #[Route('/accounts/{id}', name: 'accountsSingle')]
-    public function singleAccount(ManagerRegistry $doctrine, $id): Response
+    #[Route('/accounts/{accountId}', name: 'accountsSingle')]
+
+    public function singleAccount(ManagerRegistry $doctrine, $accountId): Response
     {
-        $accountSingle = $doctrine->getRepository(Account::class)->find($id);
-        //dump($accountSingle); die();
+
+        $uuid = Uuid::fromString($accountId);
+        $accountSingle = $doctrine->getRepository(Account::class)->findOneBy(['accountId' => $uuid]);
         return $this->render('accounts/single.html.twig', [
             "account" => $accountSingle
         ]);
