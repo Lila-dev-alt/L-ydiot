@@ -14,12 +14,11 @@ class AddAccountType extends AbstractType
     {
         $builder
           //  ->add('accountId')
-          ->add('nomCompte')
+            ->add('nomCompte')
             ->add('money')
           //  ->add('dateCreation')
           //  ->add('status')
           //  ->add('userId')
-
             ->add('submit', SubmitType::class)
         ;
     }
