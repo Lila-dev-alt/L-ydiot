@@ -25,10 +25,10 @@
         <nav>
             <ul>
                 {% if app.user %}
-                    <li><a class="transition duration-150 px-[0.5rem] py-[0.5rem] rounded-full hover:bg-[#E6E8FF] " href="{{ path('accounts') }}" title="Mes comptes">Mes comptes</a></li>
-                    <li><a class="transition duration-150 px-[0.5rem] py-[0.5rem] rounded-full hover:bg-[#E6E8FF] " href="{{ path('app_logout') }}" class="btn" title="Se déconnecter">Se déconnecter</a></li>
+                    <li><a class="transition duration-150 px-[0.5rem] py-[0.5rem] rounded-full hover:bg-[#E6E8FF]" href="{{ path('accounts') }}" title="Mes comptes">Mes comptes</a></li>
+                    <li><a class="transition duration-150 px-[0.5rem] py-[0.5rem] rounded-full hover:bg-[#E6E8FF] btn" href="{{ path('app_logout') }}"  title="Se déconnecter">Se déconnecter</a></li>
                 {% else %}
-                    <li><a class="transition duration-150 px-[0.5rem] py-[0.5rem] rounded-full hover:bg-[#E6E8FF] " href="{{ path('login') }}" class="btn" title="Se connecter">Se connecter</a></li>
+                    <li><a class="transition duration-150 px-[0.5rem] py-[0.5rem] rounded-full hover:bg-[#E6E8FF] btn" href="{{ path('login') }}" title="Se connecter">Se connecter</a></li>
                 {% endif %}
 
             </ul>
