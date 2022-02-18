@@ -30,8 +30,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'userId', targetEntity: Account::class)]
     private $accounts;
 
+
     #[ORM\Column(type: 'string', length: 255)]
-    private $Name;
+    private $surname;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $lastname;
 
     public function __construct()
     {
@@ -161,14 +165,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->email;
     }
 
-    public function getName(): ?string
+
+    public function getSurname(): ?string
     {
-        return $this->Name;
+        return $this->surname;
     }
 
-    public function setName(string $Name): self
+    public function setSurname(string $surname): self
     {
-        $this->Name = $Name;
+        $this->surname = $surname;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = $lastname;
 
         return $this;
     }
