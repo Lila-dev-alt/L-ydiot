@@ -5,14 +5,16 @@ namespace App\Controller;
 use App\Entity\Account;
 use App\Form\AddAccountType;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CreateAccountController extends AbstractController
 {
-    #[Route('/account/create', name: 'create_account')]
+    #[Route('/accounts/create', name: 'create_account')]
     //public function index(): Response
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -34,13 +36,14 @@ class CreateAccountController extends AbstractController
         ]);
     }
 
-    #[Route('/account/{id}/archive', name: 'archive-account')]
+    #[Route('/accounts/archive/{id}', name: 'archive-account')]
     //public function index(): Response
-    public function archive(Request $request, EntityManagerInterface $entityManager): Response
+    public function archive(ManagerRegistry $doctrine, $id): Response
     {
-
-        return $this->renderForm('create_account/index.html.twig', [
-            'addAccountForm' => $form,
-        ]);
+        $entityManager = $doctrine->getManager();
+        $accountSingle = $doctrine->getRepository(Account::class)->find($id);
+        $accountSingle ->setStatus('archive');
+        $entityManager->flush();
+        return $this->redirectToRoute("accounts");
     }
 }
