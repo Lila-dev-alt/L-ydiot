@@ -11,10 +11,16 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 class CreateAccountController extends AbstractController
 {
-    #[Route('/accounts/create', name: 'create_account')]
+    private $security;
+    public function __construct( Security $security)
+    {
+        $this->security = $security;
+    }
+    #[Route('/account/create', name: 'create_account')]
     //public function index(): Response
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -24,7 +30,10 @@ class CreateAccountController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            $account->setStatus('active');
+            $account->setAccountId('123444');
+            $account->setDateCreation(New \DateTime());
+            $account->setUserId($user = $this->security->getUser());
             $entityManager->persist($account);
             $entityManager->flush();
 
@@ -32,7 +41,7 @@ class CreateAccountController extends AbstractController
         }
 
         return $this->renderForm('create_account/index.html.twig', [
-            'addAccountForm' => $form,
+            'form' => $form,
         ]);
     }
 
