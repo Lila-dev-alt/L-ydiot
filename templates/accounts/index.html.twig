@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lydiot | Vos comptes{% endblock %}
+
+{% block body %}
+    <section class="accounts">
+        <div class="wrapper-section">
+            <h1>Mes comptes</h1>
+            <ul>
+                <li class="add-account"><a href="/account/create"><span class="material-icons">add</span>Ajouter un compte</a></li>
+                {% for accounts in accountList %}
+                    <li>
+                        <a href="{{ path('accounts') }}/{{ accounts.id }}">
+                            <bdi class="montant">{{accounts.money}}<span class="devise">€</span></bdi>
+                            <span class="nom-compte">{{ accounts.nomCompte }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </section>
+
+{% endblock %}
