@@ -23,14 +23,29 @@ class RegistrationFormType extends AbstractType
             ->add('surname', TextType::class, [
                 'attr' => ['placeholder' => 'Prénom'],
                 'label' => 'Prénom',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Entrez votre Prénom',
+                    ]),
+                ],
             ])
             ->add('lastname', TextType::class, [
                 'attr' => ['placeholder' => 'Nom'],
                 'label' => 'Nom',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Entrez votre Nom de Famille',
+                    ]),
+                ],
             ])
             ->add('email', TextType::class, [
                 'attr' => ['placeholder' => 'E-mail'],
                 'label' => 'E-mail',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Entrez votre email',
+                    ]),
+                ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
