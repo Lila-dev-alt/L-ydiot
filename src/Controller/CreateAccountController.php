@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Uid\Uuid;
 
 class CreateAccountController extends AbstractController
 {
@@ -31,8 +32,10 @@ class CreateAccountController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $account->setStatus('active');
-            $account->setAccountId('123444');
+            $uuid = Uuid::v4();
+            $account->setAccountId($uuid);
             $account->setDateCreation(New \DateTime());
+
             $account->setUserId($user = $this->security->getUser());
             $entityManager->persist($account);
             $entityManager->flush();
