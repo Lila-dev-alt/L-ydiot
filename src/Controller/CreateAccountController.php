@@ -73,7 +73,7 @@ class CreateAccountController extends AbstractController
             //dump($accountSingle ->getMoney());
             //dump($form->getData()["money"]);die();
 
-            $accountSingle->setMoney((int)$form->getData()["money"] + $accountSingle ->getMoney());
+            $accountSingle->setMoney((float)$form->getData()["money"] + $accountSingle ->getMoney());
 
             $entityManager->persist($accountSingle);
             $entityManager->flush();
