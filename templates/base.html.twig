@@ -7,6 +7,7 @@
     <title>{% block title %}Welcome!{% endblock %}</title>
     <link rel="shortcut icon" type="image/png" href="/assets/images/logo/favicon-lydio.png"/>
     <link rel="stylesheet" href="/assets/styles/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
     {% block stylesheets %}
@@ -24,10 +25,10 @@
         <nav>
             <ul>
                 {% if app.user %}
-                    <li><a href="{{ path('accounts') }}" title="Mes comptes">Mes comptes</a></li>
-                    <li><a href="{{ path('app_logout') }}" class="btn" title="Se déconnecter">Se déconnecter</a></li>
+                    <li><a class="transition duration-150 px-[0.5rem] py-[0.5rem] rounded-full hover:bg-[#E6E8FF] " href="{{ path('accounts') }}" title="Mes comptes">Mes comptes</a></li>
+                    <li><a class="transition duration-150 px-[0.5rem] py-[0.5rem] rounded-full hover:bg-[#E6E8FF] " href="{{ path('app_logout') }}" class="btn" title="Se déconnecter">Se déconnecter</a></li>
                 {% else %}
-                    <li><a href="{{ path('login') }}" class="btn" title="Se connecter">Se connecter</a></li>
+                    <li><a class="transition duration-150 px-[0.5rem] py-[0.5rem] rounded-full hover:bg-[#E6E8FF] " href="{{ path('login') }}" class="btn" title="Se connecter">Se connecter</a></li>
                 {% endif %}
 
             </ul>
