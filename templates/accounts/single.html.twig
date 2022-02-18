@@ -10,7 +10,6 @@
             <a href="{{ path('accounts') }}/{{ account.id }}/virement">Ajouter de l'argent</a>
             <a href="{{ path('accounts') }}/{{ account.id }}/transaction">Faire une transaction</a>
             <a href="{{ path('accounts') }}/archive/{{ account.id }}">Supprimer le compte</a>
-            {{ dump(account.accountId) }}
         </div>
     </section>
 {% endblock %}
