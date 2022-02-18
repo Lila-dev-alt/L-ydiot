@@ -42,7 +42,7 @@ section{
             align-items: flex-start;
             justify-content: flex-end;
             flex-direction: column;
-            gap: .5em;
+            gap: 0em;
             text-decoration: none;
             color: $noir;
             padding: 2em;
@@ -50,11 +50,15 @@ section{
               &.material-icons{
                 font-size: 3em;
               }
-              &.montant{
-              }
               &.nom-compte{
 
               }
+            }
+            bdi.montant{
+              font-family: $displayFont;
+              font-weight: bold;
+              color: $darkMainColor;
+              font-size: 1.5em;
             }
           }
         }
