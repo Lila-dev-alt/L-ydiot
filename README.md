@@ -16,9 +16,20 @@ Mettre en place la bdd en local :
 
 ``` docker-compose up -d ```
 
+Créer la bdd en local :
+
+``` php bin/console doctrine:database:create ```
+
+Créer un fichier de migrations :
+
+```php bin/console make:migration```
+
+Faire les migrations :
+
+```php bin/console doctrine:migrations:migrate```
 
 Enfin, lancer le serveur :
 
-```symfony server:start -d``
+```symfony server:start -d```
 
 
