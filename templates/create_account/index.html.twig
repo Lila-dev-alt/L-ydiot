@@ -3,6 +3,12 @@
 {% block title %}Lydiot | Ajouter un compte{% endblock %}
 
 {% block body %}
-    {{ form(addAccountForm) }}
+    <h1> Créer mon compte client</h1>
+
+    <div>
+        {{ form_errors(form) }}
+    </div>
+    {{ form_start(form) }}
+    {{ form_end(form) }}
 
 {% endblock %}
