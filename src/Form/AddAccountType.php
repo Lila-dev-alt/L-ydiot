@@ -13,12 +13,13 @@ class AddAccountType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('accountId')
+          //  ->add('accountId')
+          ->add('nomCompte')
             ->add('money')
-            ->add('dateCreation')
-            ->add('status')
-            ->add('userId')
-            ->add('nomCompte')
+          //  ->add('dateCreation')
+          //  ->add('status')
+          //  ->add('userId')
+
             ->add('submit', SubmitType::class)
         ;
     }
