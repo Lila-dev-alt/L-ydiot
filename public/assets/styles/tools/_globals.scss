@@ -5,16 +5,19 @@ html{
   body{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     min-height: 100vh;
     main{
       display: flex;
       flex-direction: column;
       gap: 4em;
       section{
+        &:first-of-type{
+          padding-top: $hauteurMenu;
+        }
         div.wrapper-section{
           max-width: $max-width;
-          margin: auto 0;
+          width: 100%;
+          margin: 0 auto;
           h2, h1{
             font-family: $displayFont;
             font-weight: bold;
