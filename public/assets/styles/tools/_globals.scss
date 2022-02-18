@@ -1,5 +1,5 @@
 html{
-  color: $noir;
+  color: $darkMainColor;
   font-size: $defaultFontSize;
 
   body{
@@ -11,6 +11,7 @@ html{
       flex-direction: column;
       gap: 4em;
       section{
+        padding: 0 1em;
         &:first-of-type{
           padding-top: $hauteurMenu;
         }

@@ -30,6 +30,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'userId', targetEntity: Account::class)]
     private $accounts;
 
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $surname;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $lastname;
+
     public function __construct()
     {
         $this->accounts = new ArrayCollection();
@@ -156,5 +163,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __toString()
     {
         return $this->email;
+    }
+
+
+    public function getSurname(): ?string
+    {
+        return $this->surname;
+    }
+
+    public function setSurname(string $surname): self
+    {
+        $this->surname = $surname;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = $lastname;
+
+        return $this;
     }
 }
