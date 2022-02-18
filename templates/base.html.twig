@@ -26,11 +26,12 @@
                     {% if app.user %}
                         <li><a href="" title="Se connecter">Faire un viremement</a></li>
                         <li><a href="" title="Mes comptes">Mes comptes</a></li>
-                        <li><a href="" class="btn" title="Se déconnecter">Se déconnecter</a></li>
+                        <li><a href="{{ path('app_logout') }}" class="btn" title="Se déconnecter">Se déconnecter</a></li>
                     {% else %}
-                        <li><a href="" title="Se connecter">Faire un viremement</a></li>
-                        <li><a href="" title="Mes comptes">Mes comptes</a></li>
-                        <li><a href="" class="btn" title="Se connecter">Se connecter</a></li>
+                      <!--  <li><a href="" title="Se connecter">Faire un viremement</a></li>
+                        <li><a href="" title="Mes comptes">Mes comptes</a></li> -->
+                        <li><a href="{{ path('login') }}" class="btn" title="Se connecter">Se connecter</a></li>
+                        <li><a href="{{ path('app_register') }}" class="btn" title="Se connecter">S'enregistrer</a></li>
                     {% endif %}
 
                 </ul>
@@ -42,7 +43,7 @@
         {% block body %}{% endblock %}
     <footer>
         <div class="wrapper-footer">
-            
+
         </div>
     </footer>
     </body>
