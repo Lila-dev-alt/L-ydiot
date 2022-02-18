@@ -48,12 +48,12 @@ class CreateAccountController extends AbstractController
         ]);
     }
 
-    #[Route('/accounts/archive/{id}', name: 'archive-account')]
-    //public function index(): Response
-    public function archive(ManagerRegistry $doctrine, $id): Response
+    #[Route('/accounts/archive/{accountId}', name: 'archive-account')]
+    public function archive(ManagerRegistry $doctrine, $accountId): Response
     {
+        $uuid = Uuid::fromString($accountId);
         $entityManager = $doctrine->getManager();
-        $accountSingle = $doctrine->getRepository(Account::class)->find($id);
+        $accountSingle = $doctrine->getRepository(Account::class)->findOneBy(['accountId' => $uuid]);
         $accountSingle ->setStatus('archive');
         $entityManager->flush();
         return $this->redirectToRoute("accounts");
