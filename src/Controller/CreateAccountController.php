@@ -33,4 +33,14 @@ class CreateAccountController extends AbstractController
             'addAccountForm' => $form,
         ]);
     }
+
+    #[Route('/account/{id}/archive', name: 'archive-account')]
+    //public function index(): Response
+    public function archive(Request $request, EntityManagerInterface $entityManager): Response
+    {
+
+        return $this->renderForm('create_account/index.html.twig', [
+            'addAccountForm' => $form,
+        ]);
+    }
 }
