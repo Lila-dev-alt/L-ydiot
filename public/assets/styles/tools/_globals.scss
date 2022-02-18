@@ -11,6 +11,7 @@ html{
       flex-direction: column;
       gap: 4em;
       section{
+        padding: 0 1em;
         &:first-of-type{
           padding-top: $hauteurMenu;
         }

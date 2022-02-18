@@ -3,10 +3,14 @@
 {% block title %}Lydiot | {{ account.nomCompte }}{% endblock %}
 
 {% block body %}
-    <section class="accounts">
+    <section class="heading">
         <div class="wrapper-section">
+            <bdi>{{ account.money }}<span class="devise">€</span></bdi>
             <h1>{{ account.nomCompte }}</h1>
-            <bdi>{{ account.money }} <span class="devise">€</span></bdi>
+        </div>
+    </section>
+    <section class="single-accounts">
+        <div class="wrapper-section">
             <div class="liens">
                 <a href="{{ path('accounts') }}/virement/{{ account.id }}"><span class="material-icons">account_balance_wallet</span>Ajouter de l'argent</a>
                 <a href="{{ path('accounts') }}/transaction/{{ account.id }}"><span class="material-icons">currency_exchange</span>Faire une transaction</a>

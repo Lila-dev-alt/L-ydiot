@@ -1,11 +1,13 @@
 section{
-  &.accounts{
+  &.heading{
     div.wrapper-section{
       display: flex;
+      flex-direction: column;
       flex-wrap: wrap;
       gap: 1em;
       h1{
         width: 100%;
+        line-height: 1em;
       }
       bdi{
         width: 100%;
@@ -13,15 +15,24 @@ section{
         font-family: $displayFont;
         font-weight: bold;
         color: $darkMainColor;
+        line-height: 1em;
         span{
           font-size: .5em;
         }
       }
+    }
+  }
+  &.single-accounts{
+    div.wrapper-section{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0em;
       div.liens{
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
+        width: 100%;
         gap: 4em;
         a{
           display: flex;
@@ -34,22 +45,26 @@ section{
           color: $darkMainColor;
           padding: 2em;
           box-sizing: border-box;
-          border: 2px solid $darkMainColor;
           border-radius: $borderRadius;
           background-color: $blanc;
-          -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.15);
-          box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.15);
+          -webkit-box-shadow: 0px 0px 0px 0px rgba($darkMainColor,0.15);
+          box-shadow: 0px 0px 0px 0px rgba($darkMainColor,0.15);
+          border: 1px solid rgba($darkMainColor,0.15);
           transition: all ease-in 150ms;
+          &:last-of-type{
+            background-color: rgba($rouge, .15);
+            border-color: $rouge;
+            color: $rouge;
+          }
           &:hover, &:focus{
-            -webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.15);
-            box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.15);
+            -webkit-box-shadow: 0px 0px 10px 2px rgba($darkMainColor,0.15);
+            box-shadow: 0px 0px 10px 2px rgba($darkMainColor,0.15);
           }
           span{
             font-size: 3em;
           }
         }
       }
-
     }
   }
 }

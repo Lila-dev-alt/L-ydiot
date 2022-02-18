@@ -45,6 +45,9 @@ html body main {
   flex-direction: column;
   gap: 4em;
 }
+html body main section {
+  padding: 0 1em;
+}
 html body main section:first-of-type {
   padding-top: 87.63px;
 }
@@ -103,49 +106,6 @@ html body main section div.wrapper-section h1 {
   background-color: #0067cd;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-}
-form div {
-  display: flex;
-  align-items: flex-end;
-  gap: 1em;
-  max-width: 250px;
-  border-radius: 4px;
-}
-form div label {
-  font-family: degular, sans-serif;
-  font-weight: bold;
-  color: #00286b;
-}
-form div input {
-  background-color: #ffffff;
-  border-bottom: 2px solid #000000;
-  padding: 0.5em 1em;
-}
-form div:last-of-type button {
-  font-family: degular, sans-serif;
-  font-weight: bold;
-  font-size: 1em;
-  color: #ffffff;
-  background-color: #0180ff;
-  border-radius: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5em 1em;
-  max-width: 360px;
-  width: 100%;
-  transition: all 0.25s ease-in-out;
-  border: none;
-  cursor: pointer;
-}
-form div:last-of-type button:hover, form div:last-of-type button:focus {
-  background-color: #0067cd;
-}
-
 header {
   padding: 1em;
 }
@@ -196,26 +156,26 @@ section.accounts div.wrapper-section ul {
 }
 section.accounts div.wrapper-section ul li {
   background-color: #ffffff;
-  -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
-  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 40, 107, 0.15);
+  box-shadow: 0px 0px 0px 0px rgba(0, 40, 107, 0.15);
+  border: 1px solid rgba(0, 40, 107, 0.15);
   flex-basis: 250px;
   height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  padding: 2em;
   box-sizing: border-box;
   transition: all ease-in 150ms;
 }
 section.accounts div.wrapper-section ul li:hover, section.accounts div.wrapper-section ul li:focus {
-  -webkit-box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.15);
-  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0px 0px 10px 2px rgba(0, 40, 107, 0.15);
+  box-shadow: 0px 0px 10px 2px rgba(0, 40, 107, 0.15);
 }
 section.accounts div.wrapper-section ul li.add-account a {
   align-items: center;
   justify-content: center;
-  color: #000000;
+  color: #00286b;
 }
 section.accounts div.wrapper-section ul li a {
   width: 100%;
@@ -227,36 +187,46 @@ section.accounts div.wrapper-section ul li a {
   gap: 0.5em;
   text-decoration: none;
   color: #000000;
+  padding: 2em;
 }
 section.accounts div.wrapper-section ul li a span.material-icons {
   font-size: 3em;
 }
-section.accounts div.wrapper-section {
+section.heading div.wrapper-section {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 1em;
 }
-section.accounts div.wrapper-section h1 {
+section.heading div.wrapper-section h1 {
   width: 100%;
+  line-height: 1em;
 }
-section.accounts div.wrapper-section bdi {
+section.heading div.wrapper-section bdi {
   width: 100%;
   font-size: 3em;
   font-family: degular, sans-serif;
   font-weight: bold;
   color: #00286b;
+  line-height: 1em;
 }
-section.accounts div.wrapper-section bdi span {
+section.heading div.wrapper-section bdi span {
   font-size: 0.5em;
 }
-section.accounts div.wrapper-section div.liens {
+section.single-accounts div.wrapper-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0em;
+}
+section.single-accounts div.wrapper-section div.liens {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  width: 100%;
   gap: 4em;
 }
-section.accounts div.wrapper-section div.liens a {
+section.single-accounts div.wrapper-section div.liens a {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -267,18 +237,23 @@ section.accounts div.wrapper-section div.liens a {
   color: #00286b;
   padding: 2em;
   box-sizing: border-box;
-  border: 2px solid #00286b;
   border-radius: 10px;
   background-color: #ffffff;
-  -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.15);
-  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 40, 107, 0.15);
+  box-shadow: 0px 0px 0px 0px rgba(0, 40, 107, 0.15);
+  border: 1px solid rgba(0, 40, 107, 0.15);
   transition: all ease-in 150ms;
 }
-section.accounts div.wrapper-section div.liens a:hover, section.accounts div.wrapper-section div.liens a:focus {
-  -webkit-box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.15);
-  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.15);
+section.single-accounts div.wrapper-section div.liens a:last-of-type {
+  background-color: rgba(255, 71, 87, 0.15);
+  border-color: #ff4757;
+  color: #ff4757;
 }
-section.accounts div.wrapper-section div.liens a span {
+section.single-accounts div.wrapper-section div.liens a:hover, section.single-accounts div.wrapper-section div.liens a:focus {
+  -webkit-box-shadow: 0px 0px 10px 2px rgba(0, 40, 107, 0.15);
+  box-shadow: 0px 0px 10px 2px rgba(0, 40, 107, 0.15);
+}
+section.single-accounts div.wrapper-section div.liens a span {
   font-size: 3em;
 }
 
