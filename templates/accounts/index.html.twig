@@ -7,13 +7,13 @@
         <div class="wrapper-section">
             <h1>Mes comptes</h1>
             <ul>
-                <li class="add-account"><a href="/account/create"><span class="material-icons">add</span>Ajouter un compte</a></li>
-                {% for accounts in accountList %}
-                    {% if accounts.status != "archive" %}
+                <li class="add-account"><a href="{{ path('create_account') }}"><span class="material-icons">add</span>Ajouter un compte</a></li>
+                {% for account in accountList %}
+                    {% if account.status != "archive" %}
                     <li>
-                        <a href="{{ path('accounts') }}/{{ accounts.id }}">
-                            <bdi class="montant">{{accounts.money}}<span class="devise">€</span></bdi>
-                            <span class="nom-compte">{{ accounts.nomCompte }}</span>
+                        <a href="{{ path('accountsSingle', {accountId: account.accountId}) }}">
+                            <bdi class="montant">{{account.money}}<span class="devise">€</span></bdi>
+                            <span class="nom-compte">{{ account.nomCompte }}</span>
                         </a>
                     </li>
                     {% endif %}
