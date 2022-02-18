@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lydiot | Vos comptes{% endblock %}
+
+{% block body %}
+    <section class="accounts">
+        <div class="wrapper-section">
+            <h1>Faire un virement</h1>
+            {{ form_errors(form) }}
+            {{ form_start(form) }}
+            {{ form_end(form) }}
+        </div>
+    </section>
+
+{% endblock %}
