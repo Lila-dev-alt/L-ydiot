@@ -32,7 +32,7 @@
 }
 
 html {
-  color: #000000;
+  color: #00286b;
   font-size: 20px;
 }
 html body {
@@ -92,7 +92,7 @@ html body main section div.wrapper-section h1 {
   font-weight: bold;
   font-size: 1em;
   color: #ffffff;
-  background-color: #0180ff;
+  background-color: #0180ff !important;
   border-radius: 100px;
   display: flex;
   justify-content: center;
@@ -184,7 +184,7 @@ section.accounts div.wrapper-section ul li a {
   align-items: flex-start;
   justify-content: flex-end;
   flex-direction: column;
-  gap: 0.5em;
+  gap: 0em;
   text-decoration: none;
   color: #000000;
   padding: 2em;
@@ -192,6 +192,13 @@ section.accounts div.wrapper-section ul li a {
 section.accounts div.wrapper-section ul li a span.material-icons {
   font-size: 3em;
 }
+section.accounts div.wrapper-section ul li a bdi.montant {
+  font-family: degular, sans-serif;
+  font-weight: bold;
+  color: #00286b;
+  font-size: 1.5em;
+}
+
 section.heading div.wrapper-section {
   display: flex;
   flex-direction: column;
