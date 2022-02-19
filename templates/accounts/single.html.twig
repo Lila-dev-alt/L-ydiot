@@ -4,12 +4,13 @@
 
 {% block body %}
     <section class="heading">
-        <div class="wrapper-section">
-            <bdi>{{ account.money }}<span class="devise">€</span></bdi>
-            <h1>{{ account.nomCompte }}</h1>
+        <div class="wrapper-section mb-[4rem]">
+            <h1> Compte : {{ account.nomCompte }}</h1>
+             <bdi> Montant : {{ account.money }}<span class="devise">€</span></bdi>
+             <p class="text-lg"> Numero de compte : {{ account.accountId }}</p>
         </div>
     </section>
-    <section class="single-accounts">
+    <section class="single-accounts mb-[4rem]">
         <div class="wrapper-section">
             <div class="liens">
                 <a href="{{ path('accounts') }}/virement/{{ account.id }}"><span class="material-icons">account_balance_wallet</span>Ajouter de l'argent</a>

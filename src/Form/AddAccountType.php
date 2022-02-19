@@ -33,11 +33,11 @@ class AddAccountType extends AbstractType
               ],
           ])
             ->add('money', TextType::class,[
-                'attr' => ['placeholder' => '200€'],
+                'attr' => ['placeholder' => '200'],
                 'label' => 'Montant sur le compte',
                  'constraints' => [
                     new  Positive([
-                        'message' => 'Attention le montant doit être au minimum de 0'
+                        'message' => 'Attention le montant doit être au minimum de 1€'
                     ]),
                      new NotBlank([
                          'message' => 'Merci de remplir ce champ',
@@ -47,7 +47,10 @@ class AddAccountType extends AbstractType
           //  ->add('dateCreation')
           //  ->add('status')
           //  ->add('userId')
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class , [
+                'label' =>  "Créer mon compte",
+                 'attr' => ['class' => 'btn my-[2rem] mx-auto']
+            ])
         ;
     }
 
