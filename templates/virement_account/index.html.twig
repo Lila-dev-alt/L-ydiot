@@ -7,7 +7,8 @@
         <div class="wrapper-section">
             <h1>Ajouter de l'argent</h1>
             {{ form_start(form) }}
-          {{ form_widget(form.money) }}
+            {{ form_widget(form.money,  { 'attr': {'class': 'w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'} }) }}
+
          <div class="text-xs text-red-500">{{ form_errors(form.money) }} </div>
             {{ form_end(form) }}
         </div>

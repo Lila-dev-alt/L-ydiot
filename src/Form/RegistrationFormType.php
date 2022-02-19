@@ -77,7 +77,8 @@ class RegistrationFormType extends AbstractType
                 'second_options' => ['label' => 'Répétez mot de passe', 'attr' => ['placeholder' => 'Répétez mot de passe']],
             ])
             ->add('submit', SubmitType::class, [
-                    'label' =>  "S'inscrire"])
+                    'label' =>  "S'inscrire",
+                ])
         ;
     }
 

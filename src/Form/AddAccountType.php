@@ -49,7 +49,7 @@ class AddAccountType extends AbstractType
           //  ->add('userId')
             ->add('submit', SubmitType::class , [
                 'label' =>  "Créer mon compte",
-                 'attr' => ['class' => 'btn my-[2rem] mx-auto']
+                 'attr' => ['class' => 'btn my-[2rem] mx-auto hover:opacity-80']
             ])
         ;
     }
