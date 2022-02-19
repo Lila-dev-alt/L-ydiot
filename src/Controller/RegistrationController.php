@@ -9,12 +9,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class RegistrationController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager,SessionInterface $session, TokenStorageInterface $tokenStorage): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -30,7 +33,9 @@ class RegistrationController extends AbstractController
             );
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
+            $token = new UsernamePasswordToken($user, 'main', $user->getRoles());
+            $tokenStorage->setToken($token);
+            $session->set('_security_main', serialize($token));
 
             return $this->redirectToRoute('home');
         }
