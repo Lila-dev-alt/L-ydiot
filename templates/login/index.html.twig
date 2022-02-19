@@ -4,7 +4,7 @@
 
 {% block body %}
     <section class="login">
-        <div class="wrapper-sectio">
+        <div class="wrapper-sectio max-w-xl m-auto">
             <h1 class="text-4xl uppercase font-bold mb-[2rem]">Se connecter</h1>
             <h2 class=" text-sm uppercase font-bold"> Connectez-vous pour consulter vos comptes bancaires, en créer de nouveau et effectuer des transactions </h2>
             {% if error %}
@@ -22,12 +22,12 @@
                     <input type="password" id="password" name="_password" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"/>
                 </div>
                 <div>
-                    <button class="btn my-[1rem] mx-auto block " type="submit">Se connecter</button>
+                    <button class="btn my-[1rem] mt-[3rem] mx-auto block " type="submit">Se connecter</button>
                 </div>
 
             </form>
-            <p class="text-xs font-semibold mb-[1rem]"> Nouveau chez Lydiot ? créez un compte et rejoignez la communauté</p>
-            <a class="btn" href="{{ path('app_register') }}">S'inscrire</a>
+            <p class="text-xs font-semibold mb-[1rem] text-center mt-[2rem] mb-[5rem]"> Nouveau chez Lydiot ? créez un compte et rejoignez la communauté en vous <a class="underline hover:no-underline" href="{{ path('app_register') }}">inscrivant ici</a></p>
+
         </div>
     </section>
 {% endblock %}
