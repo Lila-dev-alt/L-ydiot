@@ -60,9 +60,9 @@ class RegistrationFormType extends AbstractType
             ->add('plainPassword', RepeatedType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
+                'type' => PasswordType::class,
                 'mapped' => false,
-                'attr' => ['placeholder' => 'Mot de passe'],
-                'label' => 'Mot de passe',
+                'invalid_message' => 'Les deux champs mot de passe ne correspondent pas.',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'entrez votre mot de passe',
@@ -73,10 +73,12 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
-                'first_options'  => ['label' => 'Password'],
-                'second_options' => ['label' => 'Repeat Password'],
+                'first_options'  => ['label' => 'Mot de passe', 'attr' => ['placeholder' => 'Mot de passe']],
+                'second_options' => ['label' => 'Répétez mot de passe', 'attr' => ['placeholder' => 'Répétez mot de passe']],
             ])
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, [
+                    'label' =>  "S'inscrire",
+                ])
         ;
     }
 

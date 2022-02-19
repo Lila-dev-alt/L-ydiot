@@ -19,16 +19,19 @@ class AddMoneyType extends AbstractType
         $builder
             ->add('money', NumberType::class, [
                 'label' => "Montant d'argent",
+                'attr' => ['placeholder' => '200'],
                 'constraints' => [
                     new  Positive([
-                        'message' => 'Attention le montant doit être au minimum de 0'
+                        'message' => 'Attention le montant doit être au minimum de 1€'
                     ]),
                     new NotBlank([
-                        'message' => 'Merci de remplir ce champ',
+                        'message' => 'Merci de donner un montant',
                     ]),
                 ],
             ])
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, [
+                'label' =>  "Ajouter",
+                'attr' => ['class' => 'btn my-[2rem] mx-auto hover:opacity-80']])
         ;
     }
 

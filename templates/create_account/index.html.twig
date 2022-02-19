@@ -3,7 +3,8 @@
 {% block title %}Lydiot | Ajouter un compte{% endblock %}
 
 {% block body %}
-    <h1 class="text-4xl uppercase font-bold mb-[2rem]"> Créer mon compte Bancaire</h1>
+    <div style="margin: 1em auto; max-width: 800px;">
+    <h1 class="text-4xl uppercase font-bold mt-[4rem] mb-[1rem]"> Créer mon compte Bancaire</h1>
     <h2 class=" text-sm uppercase font-bold"> Ajoutez un nouveau compte bancaire en ligne afin de créer vos propres cagnottes, gérer vos budgets, ou effectuer des virements entre amis.  </h2>
     {{ form_start(form) }}
     <div class="my-[1rem]">
@@ -23,5 +24,5 @@
     </div>
 
     {{ form_end(form) }}
-
+    </div>
 {% endblock %}

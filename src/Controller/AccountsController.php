@@ -15,6 +15,7 @@ class AccountsController extends AbstractController
     #[Route('/accounts', name: 'accounts')]
     public function index(ManagerRegistry $doctrine, UserInterface $user): Response
     {
+
         return $this->render('accounts/index.html.twig', [
             'accountList' => $user->getAccounts(),
         ]);
@@ -27,6 +28,7 @@ class AccountsController extends AbstractController
 
         $uuid = Uuid::fromString($accountId);
         $accountSingle = $doctrine->getRepository(Account::class)->findOneBy(['accountId' => $uuid]);
+
         return $this->render('accounts/single.html.twig', [
             "account" => $accountSingle
         ]);
