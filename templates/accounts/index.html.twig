@@ -16,7 +16,7 @@
                     <li>
                         <a href="{{ path('accountsSingle', {accountId: account.accountId}) }}">
                             <bdi class="montant">{{account.money}}<span class="devise">€</span></bdi>
-                            <span class="nom-compte">{{ account.nomCompte }}</span>
+                            <span class="nom-compte">{{ account.nomCompte|capitalize }}</span>
                         </a>
                     </li>
 

@@ -13,12 +13,12 @@
     <h2 class=" text-sm uppercase font-bold mb-[3rem]"> Votre profil renseigné </h2>
 
     <div class="mb-[2rem]">
-        <p> Nom : {{ user.lastname }}</p>
-        <p> Prenom : {{ user.surname }}</p>
+        <p> Nom : {{ user.lastname|capitalize }}</p>
+        <p> Prenom : {{ user.surname|capitalize }}</p>
         <p> E-mail : {{ user.email }}</p>
     </div>
 
-    <p> <a href="{{ path('accounts') }}" class="btn"> Voir mes comptes </a></p>
+    <p> <button href="{{ path('accounts') }}" class="btn hover:opacity-80"> Voir mes comptes </button></p>
 
 </div>
 {% endblock %}
