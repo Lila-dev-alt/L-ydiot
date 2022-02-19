@@ -25,6 +25,7 @@
         <nav>
             <ul>
                 {% if app.user %}
+                    <li><a class="transition duration-150 px-[1rem] py-[0.5rem] rounded-full hover:bg-[#E6E8FF]" href="{{ path('profil') }}" title="Mon profil">Mon profil</a></li>
                     <li><a class="transition duration-150 px-[1rem] py-[0.5rem] rounded-full hover:bg-[#E6E8FF]" href="{{ path('accounts') }}" title="Mes comptes">Mes comptes</a></li>
                     <li><a class="transition duration-150 px-[1rem] py-[0.5rem] rounded-full hover:bg-[#E6E8FF] btn" href="{{ path('app_logout') }}"  title="Se déconnecter">Se déconnecter</a></li>
                     <li> Bonjour {{ app.user.surname }}</li>

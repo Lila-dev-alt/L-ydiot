@@ -5,17 +5,21 @@
 {% block body %}
     <section class="accounts">
         <div class="wrapper-section">
-            <h1>{{ app.user.surname }} : Mes comptes</h1>
+            <h1>Les comptes de {{ app.user.surname }}  </h1>
             <ul>
+
                 <li class="add-account"><a href="{{ path('create_account') }}"><span class="material-icons">add</span>Ajouter un compte</a></li>
                 {% for account in accountList %}
+
                     {% if account.status != "archive" %}
+
                     <li>
                         <a href="{{ path('accountsSingle', {accountId: account.accountId}) }}">
                             <bdi class="montant">{{account.money}}<span class="devise">€</span></bdi>
                             <span class="nom-compte">{{ account.nomCompte }}</span>
                         </a>
                     </li>
+
                     {% endif %}
                 {% endfor %}
             </ul>
