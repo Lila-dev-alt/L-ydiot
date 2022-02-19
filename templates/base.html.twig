@@ -25,13 +25,13 @@
         <nav>
             <ul>
                 {% if app.user %}
-                    <li><a class="transition duration-150 px-[1rem] py-[0.5rem] rounded-full hover:bg-[#E6E8FF]" href="{{ path('profil') }}" title="Mon profil">Mon profil</a></li>
-                    <li><a class="transition duration-150 px-[1rem] py-[0.5rem] rounded-full hover:bg-[#E6E8FF]" href="{{ path('accounts') }}" title="Mes comptes">Mes comptes</a></li>
-                    <li><a class="transition duration-150 px-[1rem] py-[0.5rem] rounded-full hover:bg-[#E6E8FF] btn" href="{{ path('app_logout') }}"  title="Se déconnecter">Se déconnecter</a></li>
+                    <li><a class="transition duration-150 px-[1rem] py-[0.5rem] rounded-full hover:opacity-80" href="{{ path('profil') }}" title="Mon profil">Mon profil</a></li>
+                    <li><a class="transition duration-150 px-[1rem] py-[0.5rem] rounded-full hover:opacity-80" href="{{ path('accounts') }}" title="Mes comptes">Mes comptes</a></li>
+                    <li><a class="transition duration-150 px-[1rem] py-[0.5rem] rounded-full hover:opacity-80 btn" href="{{ path('app_logout') }}"  title="Se déconnecter">Se déconnecter</a></li>
                     <li> Bonjour {{ app.user.surname }}</li>
                 {% else %}
-                    <li><a class="transition duration-150 px-[1rem] py-[0.5rem] rounded-full hover:bg-[#E6E8FF] btn" href="{{ path('login') }}" title="Se connecter">Se connecter</a></li>
-                    <li><a class="transition duration-150 px-[1rem] py-[0.5rem] rounded-full hover:bg-[#E6E8FF] btn" href="{{ path('app_register') }}" title="S'enregistrer'">S'enregistrer</a></li>
+                    <li><a class="transition duration-150 px-[1rem] py-[0.5rem] rounded-full hover:opacity-80 btn" href="{{ path('login') }}" title="Se connecter">Se connecter</a></li>
+                    <li><a class="transition duration-150 px-[1rem] py-[0.5rem] rounded-full hover:opacity-80 btn" href="{{ path('app_register') }}" title="S'enregistrer'">S'enregistrer</a></li>
                 {% endif %}
 
             </ul>
