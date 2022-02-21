@@ -2,17 +2,43 @@
 
 namespace App\Controller;
 
+use App\Entity\Account;
+use App\Form\AddMoneyType;
+use App\Form\TransferMoneyType;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class TransactionController extends AbstractController
 {
-    #[Route('accounts/transaction/{id}', name: 'transaction')]
-    public function index($id): Response
+    #[Route('/accounts/transaction/{id}', name: 'transaction-account')]
+    public function virement(ManagerRegistry $doctrine, Request $request, EntityManagerInterface $entityManager,  $id): Response
     {
-        return $this->render('transaction/index.html.twig', [
-            'controller_name' => 'TransactionController',
+
+
+        $accountSingle = $doctrine->getRepository(Account::class)->find($id);
+        $form = $this->createForm(TransferMoneyType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid() && (float)$form->getData()["money"]<= $accountSingle ->getMoney()) {
+            $recipientid = $form->getData()["recipient"];
+            $recipient = $doctrine->getRepository(Account::class)->find($recipientid);
+
+            $recipient->setMoney((float)$form->getData()["money"] + $recipient ->getMoney());
+            $accountSingle->setMoney(-(float)$form->getData()["money"] + $accountSingle ->getMoney());
+
+            $entityManager->persist($accountSingle);
+            $entityManager->persist($recipient);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('accounts');
+        }
+        return $this->renderForm('transaction/index.html.twig', [
+            'form' => $form,
         ]);
     }
+
 }
