@@ -31,6 +31,9 @@ class Account
     #[ORM\Column(type: 'string', length: 255)]
     private $nom_compte;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $iban;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +107,18 @@ class Account
     public function setNomCompte(string $nom_compte): self
     {
         $this->nom_compte = $nom_compte;
+
+        return $this;
+    }
+
+    public function getIban(): ?string
+    {
+        return $this->iban;
+    }
+
+    public function setIban(string $iban): self
+    {
+        $this->iban = $iban;
 
         return $this;
     }
