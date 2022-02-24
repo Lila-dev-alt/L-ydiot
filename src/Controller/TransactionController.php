@@ -14,30 +14,33 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TransactionController extends AbstractController
 {
-    #[Route('/accounts/transaction/{id}', name: 'transaction-account')]
-    public function virement(ManagerRegistry $doctrine, Request $request, EntityManagerInterface $entityManager,  $id): Response
+    #[Route('/accounts/transaction/{accountId}', name: 'transaction-account')]
+    public function virement(ManagerRegistry $doctrine, Request $request, EntityManagerInterface $entityManager,  $accountId): Response
     {
 
-
-        $accountSingle = $doctrine->getRepository(Account::class)->find($id);
+        //$accountSingle = $doctrine->getRepository(Account::class)->find($accountId);
+        $accountSingle = $doctrine->getRepository(Account::class)->findOneBy(['accountId' => $accountId]);
         $form = $this->createForm(TransferMoneyType::class);
         $form->handleRequest($request);
+        $error = false;
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($accountSingle-> getMoney() >= (float)$form->getData()["money"]){
+                $recipient = $doctrine->getRepository(Account::class)->findOneBy(['accountId' => $form->getData()["recipient"]->getaccountid()]);
+                $recipient->setMoney((float)$form->getData()["money"] + $recipient ->getMoney());
+                $accountSingle->setMoney(-(float)$form->getData()["money"] + $accountSingle ->getMoney());
+                $entityManager->persist($accountSingle);
+                $entityManager->persist($recipient);
+                $entityManager->flush();
+                return $this->redirectToRoute('accounts');
+            }
+            else{
+                $error = "Vous n'avez pas les fonds necessaires pour faire cette transaction";
+            }
 
-        if ($form->isSubmitted() && $form->isValid() && (float)$form->getData()["money"]<= $accountSingle ->getMoney()) {
-            $recipientid = $form->getData()["recipient"];
-            $recipient = $doctrine->getRepository(Account::class)->find($recipientid);
-
-            $recipient->setMoney((float)$form->getData()["money"] + $recipient ->getMoney());
-            $accountSingle->setMoney(-(float)$form->getData()["money"] + $accountSingle ->getMoney());
-
-            $entityManager->persist($accountSingle);
-            $entityManager->persist($recipient);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('accounts');
         }
         return $this->renderForm('transaction/index.html.twig', [
             'form' => $form,
+            "error" => $error
         ]);
     }
 

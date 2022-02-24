@@ -94,7 +94,6 @@ html body main section div.wrapper-section h1 {
   color: #ffffff;
   background-color: #0180ff !important;
   border-radius: 100px;
-  display: flex;
   justify-content: center;
   align-items: center;
   padding: 0.5em 1em;
@@ -154,12 +153,12 @@ section.accounts div.wrapper-section ul {
   flex-wrap: wrap;
   gap: 2em;
 }
-section.accounts div.wrapper-section ul li {
+section.accounts div.wrapper-section ul li.accounts, section.accounts div.wrapper-section ul li.add-account {
   background-color: #ffffff;
   -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 40, 107, 0.15);
   box-shadow: 0px 0px 0px 0px rgba(0, 40, 107, 0.15);
   border: 1px solid rgba(0, 40, 107, 0.15);
-  flex-basis: 250px;
+  flex-basis: calc((800px / 3) - 2em);
   height: 200px;
   display: flex;
   align-items: center;
@@ -168,16 +167,16 @@ section.accounts div.wrapper-section ul li {
   box-sizing: border-box;
   transition: all ease-in 150ms;
 }
-section.accounts div.wrapper-section ul li:hover, section.accounts div.wrapper-section ul li:focus {
+section.accounts div.wrapper-section ul li.accounts:hover, section.accounts div.wrapper-section ul li.accounts:focus, section.accounts div.wrapper-section ul li.add-account:hover, section.accounts div.wrapper-section ul li.add-account:focus {
   -webkit-box-shadow: 0px 0px 10px 2px rgba(0, 40, 107, 0.15);
   box-shadow: 0px 0px 10px 2px rgba(0, 40, 107, 0.15);
 }
-section.accounts div.wrapper-section ul li.add-account a {
+section.accounts div.wrapper-section ul li.accounts.add-account a, section.accounts div.wrapper-section ul li.add-account.add-account a {
   align-items: center;
   justify-content: center;
   color: #00286b;
 }
-section.accounts div.wrapper-section ul li a {
+section.accounts div.wrapper-section ul li.accounts a, section.accounts div.wrapper-section ul li.add-account a {
   width: 100%;
   height: 100%;
   display: flex;
@@ -189,10 +188,10 @@ section.accounts div.wrapper-section ul li a {
   color: #000000;
   padding: 2em;
 }
-section.accounts div.wrapper-section ul li a span.material-icons {
+section.accounts div.wrapper-section ul li.accounts a span.material-icons, section.accounts div.wrapper-section ul li.add-account a span.material-icons {
   font-size: 3em;
 }
-section.accounts div.wrapper-section ul li a bdi.montant {
+section.accounts div.wrapper-section ul li.accounts a bdi.montant, section.accounts div.wrapper-section ul li.add-account a bdi.montant {
   font-family: degular, sans-serif;
   font-weight: bold;
   color: #00286b;

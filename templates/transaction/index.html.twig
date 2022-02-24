@@ -1,15 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello TransactionController!{% endblock %}
+{% block title %}Lydiot | Transaction{% endblock %}
 
 {% block body %}
     <section class="accounts">
         <div class="wrapper-section">
             <h1>Envoyer de l'argent</h1>
+
+            {#<form name="{{ form.vars.name }}" action="" method="post">
+                <select id="{{ form.recipient.vars.id }}" name="{{ form.recipient.vars.full_name }}" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline">
+                    {% for options in form.recipient.vars.choices %}
+                        {% if options.data.id != currentID %}
+                            <option value="{{ options.value }}">{{ options.label }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <input type="number" id="{{ form.money.vars.id }}" name="{{ form.money.vars.full_name }}" required="required" placeholder="200" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline">
+                <button type="submit" id="{{ form.submit.vars.id }}" name="{{ form.submit.vars.full_name }}" class="btn my-[2rem] mx-auto hover:opacity-80">Envoyer</button>
+            </form>#}
+
             {{ form_start(form) }}
             {{ form_widget(form.recipient,  { 'attr': {'class': 'w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'} }) }}
             {{ form_widget(form.money,  { 'attr': {'class': 'w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'} }) }}
-
+            {{ error }}
             <div class="text-xs text-red-500">{{ form_errors(form.money) }} </div>
             {{ form_end(form) }}
         </div>
