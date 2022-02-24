@@ -40,10 +40,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'recipient', targetEntity: Message::class)]
     private $messages;
 
+    #[ORM\OneToMany(mappedBy: 'sender', targetEntity: Message::class)]
+    private $messageSender;
+
     public function __construct()
     {
         $this->accounts = new ArrayCollection();
         $this->messages = new ArrayCollection();
+        $this->messageSender = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -218,6 +222,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($message->getRecipient() === $this) {
                 $message->setRecipient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Message[]
+     */
+    public function getMessageSender(): Collection
+    {
+        return $this->messageSender;
+    }
+
+    public function addMessageSender(Message $messageSender): self
+    {
+        if (!$this->messageSender->contains($messageSender)) {
+            $this->messageSender[] = $messageSender;
+            $messageSender->setSender($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessageSender(Message $messageSender): self
+    {
+        if ($this->messageSender->removeElement($messageSender)) {
+            // set the owning side to null (unless already changed)
+            if ($messageSender->getSender() === $this) {
+                $messageSender->setSender(null);
             }
         }
 

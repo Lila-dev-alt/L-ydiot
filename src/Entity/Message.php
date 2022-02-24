@@ -22,6 +22,9 @@ class Message
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'messages')]
     private $recipient;
 
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'messageSender')]
+    private $sender;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Message
     public function setRecipient(?User $recipient): self
     {
         $this->recipient = $recipient;
+
+        return $this;
+    }
+
+    public function getSender(): ?User
+    {
+        return $this->sender;
+    }
+
+    public function setSender(?User $sender): self
+    {
+        $this->sender = $sender;
 
         return $this;
     }

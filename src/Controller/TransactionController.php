@@ -50,11 +50,14 @@ class TransactionController extends AbstractController
         ]);
     }
     #[Route('/accounts/demande/{accountId}', name: 'demande')]
-    public function askUserMoney(ManagerRegistry $doctrine, Request $request, EntityManagerInterface $entityManager,  $accountId): Response
+    public function askUserMoney(ManagerRegistry $doctrine, Request $request, EntityManagerInterface $entityManager,  $accountId, UserInterface $user): Response
     {
 
         $uuid = Uuid::fromString($accountId);
         $accountSingle = $doctrine->getRepository(Account::class)->findOneBy(['accountId' => $uuid]);
+        if($accountSingle->GetUserId()->getId() != $user->getId()){
+            return $this->redirectToRoute('accounts');
+        }
         $message = new \App\Entity\Message();
         $form = $this->createForm(AskUserType::class);
 
