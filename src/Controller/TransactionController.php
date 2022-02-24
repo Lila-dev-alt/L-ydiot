@@ -25,7 +25,7 @@ class TransactionController extends AbstractController
         $error = false;
         if ($form->isSubmitted() && $form->isValid()) {
             if ($accountSingle-> getMoney() >= (float)$form->getData()["money"]){
-                $recipient = $doctrine->getRepository(Account::class)->findOneBy(['accountId' => $form->getData()["recipient"]->getaccountid()]);
+                $recipient = $doctrine->getRepository(Account::class)->findOneBy(['iban' => $form->getData()["recipient"]]);
                 $recipient->setMoney((float)$form->getData()["money"] + $recipient ->getMoney());
                 $accountSingle->setMoney(-(float)$form->getData()["money"] + $accountSingle ->getMoney());
                 $entityManager->persist($accountSingle);
