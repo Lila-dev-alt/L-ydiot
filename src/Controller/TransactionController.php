@@ -20,12 +20,15 @@ use Symfony\Component\Uid\Uuid;
 class TransactionController extends AbstractController
 {
     #[Route('/accounts/transaction/{accountId}', name: 'transaction-account')]
-    public function virement(ManagerRegistry $doctrine, Request $request, EntityManagerInterface $entityManager,  $accountId): Response
+    public function virement(ManagerRegistry $doctrine, Request $request, EntityManagerInterface $entityManager,  $accountId, UserInterface $user): Response
     {
 
         $uuid = Uuid::fromString($accountId);
 
         $accountSingle = $doctrine->getRepository(Account::class)->findOneBy(['accountId' => $uuid]);
+        if($accountSingle->GetUserId()->getId() != $user->getId()){
+            return $this->redirectToRoute('accounts');
+        }
         $form = $this->createForm(TransferMoneyType::class);
         $form->handleRequest($request);
 

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lydiot | Erreur 404 {% endblock %}
+
+{% block body %}
+  <div class="text-center" style="margin: 5em auto; max-width: 800px;">
+    <h1 class="mb-[3rem] text-4xl uppercase font-bold my-[2rem]">Page non trouvé</h1>
+    <p class="mb-[2rem]">La page que vous cherchez est introuvable.</p>
+
+    <a href="{{ path('home') }}" class="btn inlign-block m-auto">Retour à l'accueil</a>
+
+
+  </div>
+{% endblock %}

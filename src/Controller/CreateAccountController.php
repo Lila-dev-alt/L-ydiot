@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Uid\Uuid;
 
 class CreateAccountController extends AbstractController
@@ -50,11 +51,14 @@ class CreateAccountController extends AbstractController
     }
 
     #[Route('/accounts/archive/{accountId}', name: 'archive-account')]
-    public function archive(ManagerRegistry $doctrine, $accountId): Response
+    public function archive(ManagerRegistry $doctrine, $accountId, UserInterface $user): Response
     {
         $uuid = Uuid::fromString($accountId);
         $entityManager = $doctrine->getManager();
         $accountSingle = $doctrine->getRepository(Account::class)->findOneBy(['accountId' => $uuid]);
+        if($accountSingle->GetUserId()->getId() != $user->getId()){
+            return $this->redirectToRoute('accounts');
+        }
         $accountSingle ->setStatus('archive');
         $entityManager->flush();
         return $this->redirectToRoute("accounts");
@@ -62,11 +66,14 @@ class CreateAccountController extends AbstractController
 
     #[Route('/accounts/virement/{accountId}', name: 'virement-account')]
     //public function index(): Response
-    public function virement(ManagerRegistry $doctrine, Request $request,EntityManagerInterface $entityManager,  $accountId): Response
+    public function virement(ManagerRegistry $doctrine, Request $request,EntityManagerInterface $entityManager,  $accountId, UserInterface $user): Response
     {
         $uuid = Uuid::fromString($accountId);
         $entityManager = $doctrine->getManager();
         $accountSingle = $doctrine->getRepository(Account::class)->findOneBy(['accountId' => $uuid]);
+        if($accountSingle->GetUserId()->getId() != $user->getId()){
+            return $this->redirectToRoute('accounts');
+        }
         $form = $this->createForm(AddMoneyType::class);
         $form->handleRequest($request);
 
