@@ -26,13 +26,16 @@ class TransactionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             if ($accountSingle-> getMoney() >= (float)$form->getData()["money"]){
                 $recipient = $doctrine->getRepository(Account::class)->findOneBy(['iban' => $form->getData()["recipient"]]);
+                if ($recipient == false ) {
+                    $error = "aucun compte trouvé : Le numero IBAN est incorrect";
+                } else {
                 $recipient->setMoney((float)$form->getData()["money"] + $recipient ->getMoney());
                 $accountSingle->setMoney(-(float)$form->getData()["money"] + $accountSingle ->getMoney());
                 $entityManager->persist($accountSingle);
                 $entityManager->persist($recipient);
                 $entityManager->flush();
                 return $this->redirectToRoute('accounts');
-            }
+            }}
             else{
                 $error = "Vous n'avez pas les fonds necessaires pour faire cette transaction";
             }

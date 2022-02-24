@@ -20,8 +20,9 @@
             </form>#}
 
             {{ form_start(form) }}
-            <p class="mb-[10px]"> Je souhaite envoyer de l'argent sur le compte : </p>
+            <p class="mb-[10px]"> IBAN du compte à créditer : </p>
             {{ form_widget(form.recipient,  { 'attr': {'class': 'w-full px-3 py-2 text-sm leading-tight text-gray-700 border mb-[2rem] rounded shadow appearance-none focus:outline-none focus:shadow-outline'} }) }}
+            <p class="mb-[10px]"> Montant </p>
             {{ form_widget(form.money,  { 'attr': {'class': 'w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'} }) }}
             {{ error }}
             <div class="text-xs text-red-500">{{ form_errors(form.money) }} </div>
