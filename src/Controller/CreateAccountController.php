@@ -60,12 +60,13 @@ class CreateAccountController extends AbstractController
         return $this->redirectToRoute("accounts");
     }
 
-    #[Route('/accounts/virement/{id}', name: 'virement-account')]
+    #[Route('/accounts/virement/{accountId}', name: 'virement-account')]
     //public function index(): Response
-    public function virement(ManagerRegistry $doctrine, Request $request,EntityManagerInterface $entityManager,  $id): Response
+    public function virement(ManagerRegistry $doctrine, Request $request,EntityManagerInterface $entityManager,  $accountId): Response
     {
+        $uuid = Uuid::fromString($accountId);
         $entityManager = $doctrine->getManager();
-        $accountSingle = $doctrine->getRepository(Account::class)->find($id);
+        $accountSingle = $doctrine->getRepository(Account::class)->findOneBy(['accountId' => $uuid]);
         $form = $this->createForm(AddMoneyType::class);
         $form->handleRequest($request);
 
