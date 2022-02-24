@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Account;
+use App\Entity\Message;
 use App\Entity\User;
 use App\Form\AddMoneyType;
 use App\Form\AskUserType;
+use App\Form\SelectAccountType;
 use App\Form\TransferMoneyType;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
@@ -72,6 +74,25 @@ class TransactionController extends AbstractController
         }
         return $this->renderForm('demande/index.html.twig', [
             'form' => $form,
+        ]);
+    }
+    #[Route('/accounts/accept/{message}', name: 'accept')]
+    public function AcceptDemande(Message $message, Request $request, UserInterface $user){
+
+        /** @var User $user */
+        $form = $this->createForm(SelectAccountType::class, null, ['accounts' => $user->getAccounts()]);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $message = $form->getData();
+            dump("todo");die;
+
+            return $this->redirectToRoute('accounts');
+        }
+        return $this->renderForm('demande/accept.html.twig', [
+            'form' => $form,
+            'message' => $message
         ]);
     }
 

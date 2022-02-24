@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section class="accounts">
+
+        <div class="wrapper-section">
+            <h1>Quel compte ?</h1>
+          Montant :  {{ message.money }}
+            {{ form(form) }}
+        </div>
+    </section>
+{% endblock %}

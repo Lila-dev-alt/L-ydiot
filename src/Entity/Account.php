@@ -25,6 +25,11 @@ class Account
     #[ORM\Column(type: 'string', length: 255)]
     private $status;
 
+    public function __toString(): string
+    {
+        return $this->getNomCompte();
+    }
+
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'accounts')]
     private $userId;
 
