@@ -20,6 +20,7 @@ class AddMoneyType extends AbstractType
             ->add('money', NumberType::class, [
                 'label' => "Montant d'argent",
                 'attr' => ['placeholder' => '200'],
+                'invalid_message' => 'Votre monnaie actuelle est l\'euro. Merci de préciser un montant sans valeur de monnaie. Exemple : 15.',
                 'constraints' => [
                     new  Positive([
                         'message' => 'Attention le montant doit être au minimum de 1€'
