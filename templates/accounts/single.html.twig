@@ -13,7 +13,7 @@
         <div class="wrapper-section">
             <div class="liens">
                 <a href="{{ path('virement-account', {accountId: account.accountId}) }}"><span class="material-icons">account_balance_wallet</span>Ajouter de l'argent</a>
-                <a href="{{ path('accounts') }}/transaction/{{ account.id }}"><span class="material-icons">currency_exchange</span>Faire une transaction</a>
+                <a href="{{ path('transaction-account', {accountId: account.accountId}) }}"><span class="material-icons">currency_exchange</span>Faire une transaction</a>
                 <a href="{{ path('archive-account', {accountId: account.accountId}) }}"><span class="material-icons">delete</span>Supprimer le compte</a>
             </div>
         </div>
