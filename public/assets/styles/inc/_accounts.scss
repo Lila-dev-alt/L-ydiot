@@ -11,12 +11,12 @@ section{
         display: flex;
         flex-wrap: wrap;
         gap: 2em;
-        li{
+        li.accounts,  li.add-account {
           background-color: $blanc;
           -webkit-box-shadow: 0px 0px 0px 0px rgba($darkMainColor,0.15);
           box-shadow: 0px 0px 0px 0px rgba($darkMainColor,0.15);
           border: 1px solid rgba($darkMainColor,0.15);
-          flex-basis: 250px;
+          flex-basis: calc((800px / 3) - 2em);
           height: 200px;
           display: flex;
           align-items: center;
