@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Account;
+use App\Entity\Message;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -24,11 +25,11 @@ class AskUserType extends AbstractType
                 'choice_label' => 'email'] )
             ->add('money', NumberType::class, [
                 'label' => "Montant d'argent",
-                'attr' => ['placeholder' => '200']
+                'attr' => ['placeholder' => "Mettre l'argent"]
             ])
-            ->add('Texte', TextType::class, [
+            ->add('text', TextType::class, [
                 'label' => "Texte a envoyer a l'autre utilisateur",
-                'attr' => ['placeholder' => '200']
+                'attr' => ['placeholder' => "Texte a envoyer a l'autre utilisateur"]
             ])
 
             ->add('submit', SubmitType::class, [
@@ -40,7 +41,7 @@ class AskUserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            // Configure your form options here
+            'data_class' => Message::class,
         ]);
     }
 }

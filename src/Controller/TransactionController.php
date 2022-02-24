@@ -3,14 +3,18 @@
 namespace App\Controller;
 
 use App\Entity\Account;
+use App\Entity\User;
 use App\Form\AddMoneyType;
+use App\Form\AskUserType;
 use App\Form\TransferMoneyType;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use http\Message;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Uid\Uuid;
 
 class TransactionController extends AbstractController
@@ -20,6 +24,7 @@ class TransactionController extends AbstractController
     {
 
         $uuid = Uuid::fromString($accountId);
+
         $accountSingle = $doctrine->getRepository(Account::class)->findOneBy(['accountId' => $uuid]);
         $form = $this->createForm(TransferMoneyType::class);
         $form->handleRequest($request);
@@ -38,6 +43,28 @@ class TransactionController extends AbstractController
             return $this->redirectToRoute('accounts');
         }
         return $this->renderForm('transaction/index.html.twig', [
+            'form' => $form,
+        ]);
+    }
+    #[Route('/accounts/demande/{accountId}', name: 'demande')]
+    public function askUserMoney(ManagerRegistry $doctrine, Request $request, EntityManagerInterface $entityManager,  $accountId): Response
+    {
+
+        $uuid = Uuid::fromString($accountId);
+        $accountSingle = $doctrine->getRepository(Account::class)->findOneBy(['accountId' => $uuid]);
+        $message = new \App\Entity\Message();
+        $form = $this->createForm(AskUserType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $message = $form->getData();
+            $entityManager->persist($message);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('accounts');
+        }
+        return $this->renderForm('demande/index.html.twig', [
             'form' => $form,
         ]);
     }
