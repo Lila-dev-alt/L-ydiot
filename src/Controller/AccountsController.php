@@ -23,11 +23,14 @@ class AccountsController extends AbstractController
 
     #[Route('/accounts/{accountId}', name: 'accountsSingle')]
 
-    public function singleAccount(ManagerRegistry $doctrine, $accountId): Response
+    public function singleAccount(ManagerRegistry $doctrine, $accountId, UserInterface $user): Response
     {
 
         $uuid = Uuid::fromString($accountId);
         $accountSingle = $doctrine->getRepository(Account::class)->findOneBy(['accountId' => $uuid]);
+        if($accountSingle->GetUserId()->getId() != $user->getId()){
+            return $this->redirectToRoute('accounts');
+        }
 
         return $this->render('accounts/single.html.twig', [
             "account" => $accountSingle
