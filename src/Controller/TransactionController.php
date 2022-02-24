@@ -11,16 +11,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Uid\Uuid;
 
 class TransactionController extends AbstractController
 {
     #[Route('/accounts/transaction/{accountId}', name: 'transaction-account')]
-    public function virement(ManagerRegistry $doctrine, Request $request, EntityManagerInterface $entityManager,  $accountId): Response
+    public function virement(ManagerRegistry $doctrine, Request $request, EntityManagerInterface $entityManager,  $accountId, UserInterface $user): Response
     {
 
         $uuid = Uuid::fromString($accountId);
         $accountSingle = $doctrine->getRepository(Account::class)->findOneBy(['accountId' => $uuid]);
+        if($accountSingle->GetUserId()->getId() != $user->getId()){
+            return $this->redirectToRoute('accounts');
+        }
         $form = $this->createForm(TransferMoneyType::class);
         $form->handleRequest($request);
 
