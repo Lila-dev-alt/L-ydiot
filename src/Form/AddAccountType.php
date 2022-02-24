@@ -4,6 +4,7 @@ namespace App\Form;
 
 
 use App\Entity\Account;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -32,9 +33,10 @@ class AddAccountType extends AbstractType
               ]),
               ],
           ])
-            ->add('money', TextType::class,[
+            ->add('money', NumberType::class,[
                 'attr' => ['placeholder' => '200'],
                 'label' => 'Montant sur le compte',
+                'invalid_message' => 'Votre monnaie actuelle est l\'euro. Merci de préciser un montant sans valeur de monnaie. Exemple : 15.',
                  'constraints' => [
                     new  Positive([
                         'message' => 'Attention le montant doit être au minimum de 1€'
