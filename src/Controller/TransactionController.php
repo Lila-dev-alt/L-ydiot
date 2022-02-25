@@ -9,6 +9,7 @@ use App\Form\AddMoneyType;
 use App\Form\AskUserType;
 use App\Form\SelectAccountType;
 use App\Form\TransferMoneyType;
+use App\Repository\AccountRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -69,15 +70,17 @@ class TransactionController extends AbstractController
             $message->setSender($user);
             $entityManager->persist($message);
             $entityManager->flush();
-
-            return $this->redirectToRoute('accounts');
+            $this->addFlash('success', 'Vous avez bien fait une demande de virement !');
+            return $this->redirectToRoute('accountsSingle', [
+                'accountId' => $accountId
+            ]);
         }
         return $this->renderForm('demande/index.html.twig', [
             'form' => $form,
         ]);
     }
     #[Route('/accounts/accept/{message}', name: 'accept')]
-    public function AcceptDemande(Message $message, Request $request, UserInterface $user){
+    public function AcceptDemande(Message $message, Request $request, UserInterface $user, AccountRepository $accountRepository, EntityManagerInterface $em){
 
         /** @var User $user */
         $form = $this->createForm(SelectAccountType::class, null, ['accounts' => $user->getAccounts()]);
@@ -85,9 +88,21 @@ class TransactionController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $message = $form->getData();
-            dump("todo");die;
+            $compte = $form->getData();
+            $compte = $compte["compte"];
+            $messageRecipiant = $accountRepository->findOneBy(['id' => $compte->getId()]);
+            $messageSender = $accountRepository->findOneBy(['id' => $message->getSender()->getId()]);
+            $messageRecipiant->setMoney(-(float)$message->getMoney() + $messageRecipiant ->getMoney());
+            $messageSender->setMoney((float)$message->getMoney() + $messageSender ->getMoney());
+            $em->persist($messageRecipiant);
+            $em->persist($messageSender);
+            $em->flush();
            // faire la logique du virement
+            //securiser tout ça
+            //si montant plus grand que ce que on a
+            //annuler
+            //supprimer message
+            //flash messages
             return $this->redirectToRoute('accounts');
         }
         return $this->renderForm('demande/accept.html.twig', [

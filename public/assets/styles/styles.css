@@ -1,15 +1,15 @@
-@import "vendors/reset.css";
+@import url(vendors/reset.css);
 @import url("https://use.typekit.net/wvp3qso.css");
 @font-face {
-  font-family: "Material Icons";
+  font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
   src: url(https://example.com/MaterialIcons-Regular.eot);
   /* For IE6-8 */
-  src: local("Material Icons"), local("MaterialIcons-Regular"), url(https://example.com/MaterialIcons-Regular.woff2) format("woff2"), url(https://example.com/MaterialIcons-Regular.woff) format("woff"), url(https://example.com/MaterialIcons-Regular.ttf) format("truetype");
-}
+  src: local("Material Icons"), local("MaterialIcons-Regular"), url(https://example.com/MaterialIcons-Regular.woff2) format("woff2"), url(https://example.com/MaterialIcons-Regular.woff) format("woff"), url(https://example.com/MaterialIcons-Regular.ttf) format("truetype"); }
+
 .material-icons {
-  font-family: "Material Icons";
+  font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
@@ -28,43 +28,34 @@
   /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
   /* Support for IE. */
-  font-feature-settings: "liga";
-}
+  font-feature-settings: 'liga'; }
 
 html {
   color: #00286b;
-  font-size: 20px;
-}
-html body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-html body main {
-  display: flex;
-  flex-direction: column;
-  gap: 4em;
-}
-html body main section {
-  padding: 0 1em;
-}
-html body main section:first-of-type {
-  padding-top: 87.63px;
-}
-html body main section div.wrapper-section {
-  max-width: 1440px;
-  width: 100%;
-  margin: 0 auto;
-}
-html body main section div.wrapper-section h2, html body main section div.wrapper-section h1 {
-  font-family: degular, sans-serif;
-  font-weight: bold;
-  color: #00286b;
-  font-size: 3em;
-}
-html body main section div.wrapper-section h1 {
-  font-size: 4em;
-}
+  font-size: 20px; }
+  html body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; }
+    html body main {
+      display: flex;
+      flex-direction: column;
+      gap: 4em; }
+      html body main section {
+        padding: 0 1em; }
+        html body main section:first-of-type {
+          padding-top: 87.63px; }
+        html body main section div.wrapper-section {
+          max-width: 1440px;
+          width: 100%;
+          margin: 0 auto; }
+          html body main section div.wrapper-section h2, html body main section div.wrapper-section h1 {
+            font-family: degular, sans-serif;
+            font-weight: bold;
+            color: #00286b;
+            font-size: 3em; }
+          html body main section div.wrapper-section h1 {
+            font-size: 4em; }
 
 .btnFlat {
   font-family: degular, sans-serif;
@@ -81,11 +72,9 @@ html body main section div.wrapper-section h1 {
   width: 100%;
   transition: all 0.25s ease-in-out;
   border: none;
-  cursor: pointer;
-}
-.btnFlat:hover, .btnFlat:focus {
-  background-color: #0067cd;
-}
+  cursor: pointer; }
+  .btnFlat:hover, .btnFlat:focus {
+    background-color: #0067cd; }
 
 .btn {
   font-family: degular, sans-serif;
@@ -94,174 +83,144 @@ html body main section div.wrapper-section h1 {
   color: #ffffff;
   background-color: #0180ff !important;
   border-radius: 100px;
-  display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.5em 1em;
+  padding: .5em 1em;
   transition: all 0.25s ease-in-out;
   border: none;
-  cursor: pointer;
-}
-.btn:hover, .btn:focus {
-  background-color: #0067cd;
-}
+  cursor: pointer; }
+  .btn:hover, .btn:focus {
+    background-color: #0067cd; }
 
 header {
-  padding: 1em;
-}
-header div.wrapper-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1440px;
-  margin: 0 auto;
-}
-header div.wrapper-header a.logo {
-  display: block;
-  max-width: 150px;
-  width: 100%;
-}
-header div.wrapper-header a.logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-header div.wrapper-header nav ul {
-  display: flex;
-  align-items: center;
-  gap: 2em;
-}
-header div.wrapper-header nav ul li a {
-  text-decoration: none;
-  color: #000000;
-}
-header div.wrapper-header nav ul li a.btn {
-  color: #ffffff;
-  font-weight: normal;
-}
+  padding: 1em; }
+  header div.wrapper-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1440px;
+    margin: 0 auto; }
+    header div.wrapper-header a.logo {
+      display: block;
+      max-width: 150px;
+      width: 100%; }
+      header div.wrapper-header a.logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; }
+    header div.wrapper-header nav ul {
+      display: flex;
+      align-items: center;
+      gap: 2em; }
+      header div.wrapper-header nav ul li a {
+        text-decoration: none;
+        color: #000000; }
+        header div.wrapper-header nav ul li a.btn {
+          color: #ffffff;
+          font-weight: normal; }
 
 section.accounts {
   display: flex;
-  align-items: center;
-}
-section.accounts div.wrapper-section {
-  display: flex;
-  flex-direction: column;
-  gap: 4em;
-}
-section.accounts div.wrapper-section ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2em;
-}
-section.accounts div.wrapper-section ul li {
-  background-color: #ffffff;
-  -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 40, 107, 0.15);
-  box-shadow: 0px 0px 0px 0px rgba(0, 40, 107, 0.15);
-  border: 1px solid rgba(0, 40, 107, 0.15);
-  flex-basis: 250px;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  box-sizing: border-box;
-  transition: all ease-in 150ms;
-}
-section.accounts div.wrapper-section ul li:hover, section.accounts div.wrapper-section ul li:focus {
-  -webkit-box-shadow: 0px 0px 10px 2px rgba(0, 40, 107, 0.15);
-  box-shadow: 0px 0px 10px 2px rgba(0, 40, 107, 0.15);
-}
-section.accounts div.wrapper-section ul li.add-account a {
-  align-items: center;
-  justify-content: center;
-  color: #00286b;
-}
-section.accounts div.wrapper-section ul li a {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  flex-direction: column;
-  gap: 0em;
-  text-decoration: none;
-  color: #000000;
-  padding: 2em;
-}
-section.accounts div.wrapper-section ul li a span.material-icons {
-  font-size: 3em;
-}
-section.accounts div.wrapper-section ul li a bdi.montant {
-  font-family: degular, sans-serif;
-  font-weight: bold;
-  color: #00286b;
-  font-size: 1.5em;
-}
+  align-items: center; }
+  section.accounts div.wrapper-section {
+    display: flex;
+    flex-direction: column;
+    gap: 4em; }
+    section.accounts div.wrapper-section ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2em; }
+      section.accounts div.wrapper-section ul li {
+        background-color: #ffffff;
+        -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 40, 107, 0.15);
+        box-shadow: 0px 0px 0px 0px rgba(0, 40, 107, 0.15);
+        border: 1px solid rgba(0, 40, 107, 0.15);
+        flex-basis: 250px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        box-sizing: border-box;
+        transition: all ease-in 150ms; }
+        section.accounts div.wrapper-section ul li:hover, section.accounts div.wrapper-section ul li:focus {
+          -webkit-box-shadow: 0px 0px 10px 2px rgba(0, 40, 107, 0.15);
+          box-shadow: 0px 0px 10px 2px rgba(0, 40, 107, 0.15); }
+        section.accounts div.wrapper-section ul li.add-account a {
+          align-items: center;
+          justify-content: center;
+          color: #00286b; }
+        section.accounts div.wrapper-section ul li a {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-end;
+          flex-direction: column;
+          gap: 0em;
+          text-decoration: none;
+          color: #000000;
+          padding: 2em; }
+          section.accounts div.wrapper-section ul li a span.material-icons {
+            font-size: 3em; }
+          section.accounts div.wrapper-section ul li a bdi.montant {
+            font-family: degular, sans-serif;
+            font-weight: bold;
+            color: #00286b;
+            font-size: 1.5em; }
 
 section.heading div.wrapper-section {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  gap: 1em;
-}
-section.heading div.wrapper-section h1 {
-  width: 100%;
-  line-height: 1em;
-}
-section.heading div.wrapper-section bdi {
-  width: 100%;
-  font-size: 3em;
-  font-family: degular, sans-serif;
-  font-weight: bold;
-  color: #00286b;
-  line-height: 1em;
-}
-section.heading div.wrapper-section bdi span {
-  font-size: 0.5em;
-}
+  gap: 1em; }
+  section.heading div.wrapper-section h1 {
+    width: 100%;
+    line-height: 1em; }
+  section.heading div.wrapper-section bdi {
+    width: 100%;
+    font-size: 3em;
+    font-family: degular, sans-serif;
+    font-weight: bold;
+    color: #00286b;
+    line-height: 1em; }
+    section.heading div.wrapper-section bdi span {
+      font-size: .5em; }
+
 section.single-accounts div.wrapper-section {
   display: flex;
   flex-wrap: wrap;
-  gap: 0em;
-}
-section.single-accounts div.wrapper-section div.liens {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  gap: 4em;
-}
-section.single-accounts div.wrapper-section div.liens a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1em;
-  max-width: 300px;
-  width: 100%;
-  color: #00286b;
-  padding: 2em;
-  box-sizing: border-box;
-  border-radius: 10px;
-  background-color: #ffffff;
-  -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 40, 107, 0.15);
-  box-shadow: 0px 0px 0px 0px rgba(0, 40, 107, 0.15);
-  border: 1px solid rgba(0, 40, 107, 0.15);
-  transition: all ease-in 150ms;
-}
-section.single-accounts div.wrapper-section div.liens a:last-of-type {
-  background-color: rgba(255, 71, 87, 0.15);
-  border-color: #ff4757;
-  color: #ff4757;
-}
-section.single-accounts div.wrapper-section div.liens a:hover, section.single-accounts div.wrapper-section div.liens a:focus {
-  -webkit-box-shadow: 0px 0px 10px 2px rgba(0, 40, 107, 0.15);
-  box-shadow: 0px 0px 10px 2px rgba(0, 40, 107, 0.15);
-}
-section.single-accounts div.wrapper-section div.liens a span {
-  font-size: 3em;
-}
-
-/*# sourceMappingURL=styles.css.map */
+  gap: 0em; }
+  section.single-accounts div.wrapper-section div.liens {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 4em; }
+    section.single-accounts div.wrapper-section div.liens a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1em;
+      max-width: 300px;
+      width: 100%;
+      color: #00286b;
+      padding: 2em;
+      box-sizing: border-box;
+      border-radius: 10px;
+      background-color: #ffffff;
+      -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 40, 107, 0.15);
+      box-shadow: 0px 0px 0px 0px rgba(0, 40, 107, 0.15);
+      border: 1px solid rgba(0, 40, 107, 0.15);
+      transition: all ease-in 150ms; }
+      section.single-accounts div.wrapper-section div.liens a:nth-of-type(3) {
+        background-color: rgba(255, 71, 87, 0.15);
+        border-color: #ff4757;
+        color: #ff4757; }
+      section.single-accounts div.wrapper-section div.liens a:hover, section.single-accounts div.wrapper-section div.liens a:focus {
+        -webkit-box-shadow: 0px 0px 10px 2px rgba(0, 40, 107, 0.15);
+        box-shadow: 0px 0px 10px 2px rgba(0, 40, 107, 0.15); }
+      section.single-accounts div.wrapper-section div.liens a span {
+        font-size: 3em; }

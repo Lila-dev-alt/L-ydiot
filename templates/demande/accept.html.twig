@@ -5,9 +5,12 @@
     <section class="accounts">
 
         <div class="wrapper-section">
-            <h1>Quel compte ?</h1>
+            <h1>Souhaitez-vous acceptez ce virement ?</h1>
           Montant :  {{ message.money }} euros
-         {{ form(form) }}
+            {{ form_start(form) }}
+          Depuis quel compte :  {{ form_widget(form.compte,  { 'attr': {'class': 'w-60 px-3 py-2 text-sm leading-tight text-gray-700 border mb-[2rem] rounded shadow appearance-none focus:outline-none focus:shadow-outline'} }) }}
+            {{ form_end(form) }}
+
         </div>
     </section>
 {% endblock %}
