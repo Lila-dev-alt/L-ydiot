@@ -26,7 +26,7 @@ class AskUserType extends AbstractType
                 'choice_label' => 'email'] )
             ->add('money', NumberType::class, [
                 'label' => "Montant d'argent",
-                'attr' => ['placeholder' => "Mettre l'argent"],
+                'attr' => ['placeholder' => "Montant d'argent"],
                 'constraints' => [
                     new  Positive([
                         'message' => 'Attention le montant doit être au minimum de 1€'
@@ -38,7 +38,7 @@ class AskUserType extends AbstractType
             ])
             ->add('text', TextType::class, [
                 'label' => "Texte a envoyer a l'autre utilisateur",
-                'attr' => ['placeholder' => "Texte a envoyer a l'autre utilisateur"],
+                'attr' => ['placeholder' => "Texte"],
                 'constraints' => [
                     new  Length([
                         'min' => 6,

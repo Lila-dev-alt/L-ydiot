@@ -96,16 +96,27 @@ class TransactionController extends AbstractController
             $messageSender = $accountRepository->findOneBy(['id' => $message->getMessageSender()->getId()]);
             $mR = $messageRecipiant->setMoney(-(float)$message->getMoney() + $messageRecipiant ->getMoney());
             $mS = $messageSender->setMoney((float)$message->getMoney() + $messageSender ->getMoney());
-            $message->setStatus('accepted');
-            $em->persist($mR);
-            $em->persist($mS);
-            $em->flush();
+
+            if ($mR->getMoney() > 0 ) {
+                $em->persist($message->setStatus('accepted'));
+                $em->persist($mR);
+                $em->persist($mS);
+                $em->flush();
+                $this->addFlash('success', 'Vous avez bien été débité de ' . $message->getMoney() . '€');
+                return $this->redirectToRoute('accounts');
+            }else{
+                $message->setStatus('refused');
+                $em->persist($message);
+                $em->flush();
+                $this->addFlash('danger', "Virement refusé: vous n'avez pas assez d'argent sur le compte");
+            }
+
             //securiser tout ça
             //si montant plus grand que ce que on a
             //annuler
             //mettre ttout dans un controller dedier
-            $this->addFlash('success', 'Vous avez bien été débité de ' . $message->getMoney() . '€');
-            return $this->redirectToRoute('accounts');
+            //message pas de message en attete s'affiche deux fois
+
         }
         return $this->renderForm('demande/accept.html.twig', [
             'form' => $form,

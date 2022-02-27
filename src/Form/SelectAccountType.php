@@ -21,11 +21,6 @@ class SelectAccountType extends AbstractType
             ->add('compte', EntityType::class, [
                 'choices' => $options['accounts'],
                 'class' => Account::class,
-                'constraints' => [
-                    new  Positive([
-                        'message' => 'Attention le montant doit être au minimum de 1€'
-                    ])
-                ],
             ])
         ->add('submit', SubmitType::class, [
         'label' =>  "Accepter",
