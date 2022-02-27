@@ -52,7 +52,7 @@ class TransactionController extends AbstractController
         ]);
     }
     #[Route('/accounts/demande/{accountId}', name: 'demande')]
-    public function askUserMoney(ManagerRegistry $doctrine, Request $request, EntityManagerInterface $entityManager,  $accountId, UserInterface $user): Response
+    public function askUserMoney(ManagerRegistry $doctrine, Request $request, EntityManagerInterface $entityManager, $accountId, UserInterface $user): Response
     {
 
         $uuid = Uuid::fromString($accountId);
@@ -67,7 +67,7 @@ class TransactionController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $message = $form->getData();
-            $message->setSender($accountSingle);
+            $message->setMessageSender($accountSingle);
             $entityManager->persist($message);
             $entityManager->flush();
             $this->addFlash('success', 'Vous avez bien fait une demande de virement !');
@@ -93,11 +93,11 @@ class TransactionController extends AbstractController
 
             $messageRecipiant = $accountRepository->findOneBy(['id' => $compte->getId()]);
             //entité message, changer propriété
-            $messageSender = $accountRepository->findOneBy(['id' => $message->getSender()->getId()]);
-            $messageRecipiant->setMoney(-(float)$message->getMoney() + $messageRecipiant ->getMoney());
-            $messageSender->setMoney((float)$message->getMoney() + $messageSender ->getMoney());
-            $em->persist($messageRecipiant);
-            $em->persist($messageSender);
+            $messageSender = $accountRepository->findOneBy(['id' => $message->getMessageSender()->getId()]);
+           $mR = $messageRecipiant->setMoney(-(float)$message->getMoney() + $messageRecipiant ->getMoney());
+           $mS = $messageSender->setMoney((float)$message->getMoney() + $messageSender ->getMoney());
+            $em->persist($mR);
+            $em->persist($mS);
             $em->flush();
            // faire la logique du virement
             //securiser tout ça
