@@ -99,12 +99,12 @@ class TransactionController extends AbstractController
             $em->persist($mR);
             $em->persist($mS);
             $em->flush();
-           // faire la logique du virement
             //securiser tout ça
             //si montant plus grand que ce que on a
             //annuler
-            //supprimer message
-            //flash messages
+            //grisé message si accepté
+            //mettre ttout dans un controller dedier
+            $this->addFlash('success', 'Vous avez bien été débité de ' . $message->getMoney() . '€');
             return $this->redirectToRoute('accounts');
         }
         return $this->renderForm('demande/accept.html.twig', [
