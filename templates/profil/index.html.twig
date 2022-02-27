@@ -21,7 +21,7 @@
     <div class="mb-[2rem]">
 
         {% for message in messages %}
-
+            {% if message.status is same as 'pending' %}
             <div class="flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden mb-[2rem]">
                 <div class="w-2 bg-gray-800"></div>
                 <div class="flex items-center">
@@ -35,8 +35,9 @@
                     </div>
                 </div>
             </div>
-
-
+        {% else %}
+            <p> Vous n'avez pas de demande de virement en attente.</p>
+        {% endif %}
         {% endfor %}
     </div>
 

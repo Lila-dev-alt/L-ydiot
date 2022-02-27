@@ -67,6 +67,7 @@ class TransactionController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $message = $form->getData();
+            $message->setStatus('pending');
             $message->setMessageSender($accountSingle);
             $entityManager->persist($message);
             $entityManager->flush();
@@ -92,17 +93,16 @@ class TransactionController extends AbstractController
             $compte = $compte["compte"];
 
             $messageRecipiant = $accountRepository->findOneBy(['id' => $compte->getId()]);
-            //entité message, changer propriété
             $messageSender = $accountRepository->findOneBy(['id' => $message->getMessageSender()->getId()]);
-           $mR = $messageRecipiant->setMoney(-(float)$message->getMoney() + $messageRecipiant ->getMoney());
-           $mS = $messageSender->setMoney((float)$message->getMoney() + $messageSender ->getMoney());
+            $mR = $messageRecipiant->setMoney(-(float)$message->getMoney() + $messageRecipiant ->getMoney());
+            $mS = $messageSender->setMoney((float)$message->getMoney() + $messageSender ->getMoney());
+            $message->setStatus('accepted');
             $em->persist($mR);
             $em->persist($mS);
             $em->flush();
             //securiser tout ça
             //si montant plus grand que ce que on a
             //annuler
-            //grisé message si accepté
             //mettre ttout dans un controller dedier
             $this->addFlash('success', 'Vous avez bien été débité de ' . $message->getMoney() . '€');
             return $this->redirectToRoute('accounts');
