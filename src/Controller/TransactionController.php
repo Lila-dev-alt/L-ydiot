@@ -67,7 +67,7 @@ class TransactionController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $message = $form->getData();
-            $message->setSender($user);
+            $message->setSender($accountSingle);
             $entityManager->persist($message);
             $entityManager->flush();
             $this->addFlash('success', 'Vous avez bien fait une demande de virement !');
@@ -90,7 +90,9 @@ class TransactionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $compte = $form->getData();
             $compte = $compte["compte"];
+
             $messageRecipiant = $accountRepository->findOneBy(['id' => $compte->getId()]);
+            //entité message, changer propriété
             $messageSender = $accountRepository->findOneBy(['id' => $message->getSender()->getId()]);
             $messageRecipiant->setMoney(-(float)$message->getMoney() + $messageRecipiant ->getMoney());
             $messageSender->setMoney((float)$message->getMoney() + $messageSender ->getMoney());
