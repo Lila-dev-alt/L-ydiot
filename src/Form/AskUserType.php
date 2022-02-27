@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Positive;
 
@@ -25,11 +26,28 @@ class AskUserType extends AbstractType
                 'choice_label' => 'email'] )
             ->add('money', NumberType::class, [
                 'label' => "Montant d'argent",
-                'attr' => ['placeholder' => "Mettre l'argent"]
+                'attr' => ['placeholder' => "Mettre l'argent"],
+                'constraints' => [
+                    new  Positive([
+                        'message' => 'Attention le montant doit être au minimum de 1€'
+                    ]),
+                    new NotBlank([
+                        'message' => 'Merci de donner un montant',
+                    ]),
+                ],
             ])
             ->add('text', TextType::class, [
                 'label' => "Texte a envoyer a l'autre utilisateur",
-                'attr' => ['placeholder' => "Texte a envoyer a l'autre utilisateur"]
+                'attr' => ['placeholder' => "Texte a envoyer a l'autre utilisateur"],
+                'constraints' => [
+                    new  Length([
+                        'min' => 6,
+                        'message' => "Veuillez écrire un message de plus de 6 charactères"
+                    ]),
+                    new NotBlank([
+                        'message' => 'Merci de mettre un texte',
+                    ]),
+                ],
             ])
 
             ->add('submit', SubmitType::class, [
