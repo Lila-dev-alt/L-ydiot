@@ -42,7 +42,7 @@ class AskUserType extends AbstractType
                 'constraints' => [
                     new  Length([
                         'min' => 6,
-                        'message' => "Veuillez écrire un message de plus de 6 charactères"
+                        'minMessage' => "Veuillez écrire un message de plus de 6 charactères"
                     ]),
                     new NotBlank([
                         'message' => 'Merci de mettre un texte',
