@@ -24,6 +24,7 @@ Mettre en place la bdd en local :
 Remplir le .env.local en fonction des variables dans le docker-compose:
 
 ```DATABASE_URL="postgresql://user:mdp@127.0.0.1:5432/name_app"```
+
 Créer la bdd en local :
 
 ``` php bin/console doctrine:database:create ```
