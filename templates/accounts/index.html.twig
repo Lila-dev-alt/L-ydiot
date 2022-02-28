@@ -15,14 +15,14 @@
                 </div>
             {% endfor %}
             <h1>Les comptes de {{ app.user.surname }}  </h1>
+
             <ul>
 
                 <li class="add-account"><a href="{{ path('create_account') }}"><span class="material-icons">add</span>Ajouter un compte</a></li>
                 {% for account in accountList %}
-
                     {% if account.status != "archive" %}
 
-                    <li>
+                    <li class="accounts">
                         <a href="{{ path('accountsSingle', {accountId: account.accountId}) }}">
                             <bdi class="montant">{{account.money}}<span class="devise">€</span></bdi>
                             <span class="nom-compte">{{ account.nomCompte|capitalize }}</span>

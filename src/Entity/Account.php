@@ -46,6 +46,10 @@ class Account
         $this->messages = new ArrayCollection();
     }
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $iban;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -149,6 +153,17 @@ class Account
                 $message->setMessageSender(null);
             }
         }
+        return $this;
+    }
+
+    public function getIban(): ?string
+    {
+        return $this->iban;
+    }
+
+    public function setIban(string $iban): self
+    {
+        $this->iban = $iban;
 
         return $this;
     }

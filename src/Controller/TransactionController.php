@@ -31,24 +31,32 @@ class TransactionController extends AbstractController
         if($accountSingle->GetUserId()->getId() != $user->getId()){
             return $this->redirectToRoute('accounts');
         }
+        //$accountSingle = $doctrine->getRepository(Account::class)->find($accountId);
+        $accountSingle = $doctrine->getRepository(Account::class)->findOneBy(['accountId' => $accountId]);
         $form = $this->createForm(TransferMoneyType::class);
         $form->handleRequest($request);
+        $error = false;
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($accountSingle-> getMoney() >= (float)$form->getData()["money"]){
+                $recipient = $doctrine->getRepository(Account::class)->findOneBy(['iban' => $form->getData()["recipient"]]);
+                if ($recipient == false ) {
+                    $error = "aucun compte trouvé : Le numero IBAN est incorrect";
+                } else {
+                $recipient->setMoney((float)$form->getData()["money"] + $recipient ->getMoney());
+                $accountSingle->setMoney(-(float)$form->getData()["money"] + $accountSingle ->getMoney());
+                $entityManager->persist($accountSingle);
+                $entityManager->persist($recipient);
+                $entityManager->flush();
+                return $this->redirectToRoute('accounts');
+            }}
+            else{
+                $error = "Vous n'avez pas les fonds necessaires pour faire cette transaction";
+            }
 
-        if ($form->isSubmitted() && $form->isValid() && (float)$form->getData()["money"]<= $accountSingle ->getMoney()) {
-            $recipientid = $form->getData()["recipient"];
-            $recipient = $doctrine->getRepository(Account::class)->find($recipientid);
-
-            $recipient->setMoney((float)$form->getData()["money"] + $recipient ->getMoney());
-            $accountSingle->setMoney(-(float)$form->getData()["money"] + $accountSingle ->getMoney());
-
-            $entityManager->persist($accountSingle);
-            $entityManager->persist($recipient);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('accounts');
         }
         return $this->renderForm('transaction/index.html.twig', [
             'form' => $form,
+            "error" => $error
         ]);
     }
 

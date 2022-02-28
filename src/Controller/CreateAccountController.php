@@ -35,9 +35,10 @@ class CreateAccountController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $account->setStatus('active');
             $uuid = Uuid::v4();
+            $uuid2 = Uuid::v4();
             $account->setAccountId($uuid);
+            $account->setIban($uuid2);
             $account->setDateCreation(New \DateTime());
-
             $account->setUserId($user = $this->security->getUser());
             $entityManager->persist($account);
             $entityManager->flush();
