@@ -17,6 +17,42 @@
         <p> Prenom : {{ user.surname|capitalize }}</p>
         <p> E-mail : {{ user.email }}</p>
     </div>
+    <h2 class=" text-sm uppercase font-bold mb-[3rem]">Messages : demande de virement</h2>
+    <div class="mb-[2rem]">
+
+        {% for message in messages %}
+            {% if message.status is same as 'pending' %}
+            <div class="flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden mb-[2rem]">
+                <div class="w-2 bg-gray-800"></div>
+                <div class="flex items-center">
+                    <div class="mx-3">
+                        <h2 class="text-xl font-semibold text-gray-800"> {% if message.messageSender %}
+                                <p> Nom: {{ message.messageSender.userId.surname}} {{ message.messageSender.userId.lastname}}</p>
+                            {% endif %}</h2>
+                        <p class="text-gray-600">  <p> Argent : {{ message.money|capitalize }}</p>
+                        <p> Texte de la demande : {{ message.text|capitalize }}</p>
+                        <a  class="btn w-48 mt-[1rem] mb-[1rem] mx-auto block hover:opacity-80" href="{{ path('accept', {message: message.id}) }}" >Accepter la demande</a>
+                    </div>
+                </div>
+            </div>
+        {% elseif message.status is same as 'refused' %}
+            <div class="flex max-w-md bg-red-500 shadow-lg rounded-lg overflow-hidden mb-[2rem]">
+                <div class="w-2 bg-gray-800"></div>
+                <div class="flex items-center">
+                    <div class="mx-3">
+                        <h2 class="text-xl font-semibold text-gray-800"> {% if message.messageSender %}
+                                <p> Nom: {{ message.messageSender.userId.surname}} {{ message.messageSender.userId.lastname}}</p>
+                            {% endif %}</h2>
+                        <p class="text-gray-600">  <p> Argent : {{ message.money|capitalize }}</p>
+                        <p> Texte de la demande : {{ message.text|capitalize }}</p>
+                        <a  class="btn w-48 mt-[1rem] mb-[1rem] mx-auto block hover:opacity-80" href="{{ path('accept', {message: message.id}) }}" >Accepter la demande</a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
 
     <a href="{{ path('accounts') }}" class="btn inline-block hover:opacity-80"> Voir mes comptes </a>
 

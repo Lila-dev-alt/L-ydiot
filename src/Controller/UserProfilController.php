@@ -2,21 +2,26 @@
 
 namespace App\Controller;
 
+use App\Entity\Account;
+use App\Entity\Message;
 use App\Entity\User;
+use App\Repository\MessageRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\Persistence\ManagerRegistry;
 
 class UserProfilController extends AbstractController
 {
     #[Route('/profil', name: 'profil')]
-    public function index(ManagerRegistry $doctrine, UserInterface $user): Response
+    public function index(UserInterface $user, MessageRepository $repo): Response
     {
-        dump($user);
+        $messages = $repo->findBy(['recipient' => $user]);
+
         return $this->render('profil/index.html.twig', [
-            'user' => $user
+            'user' => $user,
+            'messages' => $messages
         ]);
     }
 }

@@ -37,9 +37,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255)]
     private $lastname;
 
+    #[ORM\OneToMany(mappedBy: 'recipient', targetEntity: Message::class)]
+    private $messages;
+
+
+
     public function __construct()
     {
         $this->accounts = new ArrayCollection();
+        $this->messages = new ArrayCollection();
+        $this->messageSender = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -186,6 +193,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLastname(string $lastname): self
     {
         $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Message[]
+     */
+    public function getMessages(): Collection
+    {
+        return $this->messages;
+    }
+
+    public function addMessage(Message $message): self
+    {
+        if (!$this->messages->contains($message)) {
+            $this->messages[] = $message;
+            $message->setRecipient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessage(Message $message): self
+    {
+        if ($this->messages->removeElement($message)) {
+            // set the owning side to null (unless already changed)
+            if ($message->getRecipient() === $this) {
+                $message->setRecipient(null);
+            }
+        }
 
         return $this;
     }

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="accounts">
+        <div class="wrapper-section">
+            <h1>Faire une demande </h1>
+            {{ form_start(form) }}
+            <div class="pb-3">
+            {{ form_widget(form.recipient,  { 'attr': {'class': 'w-80 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'} }) }}
+            </div>
+            <div class="pb-3">
+            {{ form_widget(form.money,  { 'attr': {'class': 'w-80 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'} }) }}
+            </div>
+            <div class="text-xs text-red-500">{{ form_errors(form.text) }} </div>
+            <div>
+            {{ form_widget(form.text,  { 'attr': {'class': 'w-80 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'} }) }}
+            </div>
+            <div class="text-xs text-red-500">{{ form_errors(form.money) }} </div>
+            {{ form_end(form) }}
+        </div>
+    </section>
+{% endblock %}

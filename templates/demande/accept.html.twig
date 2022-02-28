@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section class="accounts">
+
+        <div class="wrapper-section">
+            {% for message in app.flashes('danger') %}
+                <div class="bg-red-100 border-t-4 border-red-500 rounded-b text-red-900 px-4 py-3 shadow-md" role="alert">
+                    <div class="flex">
+                        <div>
+                            <p class="font-bold">{{ message }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <h1>Souhaitez-vous acceptez ce virement ?</h1>
+            <div class="pb-3">
+          Montant :  {{ message.money }} euros
+            </div>
+            {{ form_start(form) }}
+            <div>
+          Depuis quel compte :  {{ form_widget(form.compte,  { 'attr': {'class': 'w-60 px-3 py-2 text-sm leading-tight text-gray-700 border mb-[2rem] rounded shadow appearance-none focus:outline-none focus:shadow-outline'} }) }}
+            </div>
+            {{ form_end(form) }}
+
+        </div>
+    </section>
+{% endblock %}

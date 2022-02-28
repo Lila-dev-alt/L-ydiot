@@ -5,6 +5,15 @@
 {% block body %}
     <section class="heading" style="margin: 1em auto; max-width: 800px;">
         <div class="wrapper-section mb-[4rem]" >
+            {% for message in app.flashes('success') %}
+                <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+                    <div class="flex">
+                        <div>
+                            <p class="font-bold">{{ message }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
             <h1> Compte : {{ account.nomCompte }}</h1>
              <bdi> Montant : {{ account.money }}<span class="devise">€</span></bdi>
             <span>IBAN : {{ account.iban }}</span>
@@ -16,6 +25,7 @@
                 <a href="{{ path('virement-account', {accountId: account.accountId}) }}"><span class="material-icons">account_balance_wallet</span>Ajouter de l'argent</a>
                 <a href="{{ path('transaction-account', {accountId: account.accountId}) }}"><span class="material-icons">currency_exchange</span>Faire une transaction</a>
                 <a href="{{ path('archive-account', {accountId: account.accountId}) }}"><span class="material-icons">delete</span>Supprimer le compte</a>
+                <a href="{{ path('demande', {accountId: account.accountId}) }}"><span class="material-icons">account_balance_wallet</span>Demande de virement</a>
             </div>
         </div>
     </section>
