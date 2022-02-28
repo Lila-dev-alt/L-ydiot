@@ -65,7 +65,6 @@ class CreateAccountController extends AbstractController
     }
 
     #[Route('/accounts/virement/{accountId}', name: 'virement-account')]
-    //public function index(): Response
     public function virement(ManagerRegistry $doctrine, Request $request,EntityManagerInterface $entityManager,  $accountId, UserInterface $user): Response
     {
         $uuid = Uuid::fromString($accountId);
@@ -78,8 +77,6 @@ class CreateAccountController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            //dump($accountSingle ->getMoney());
-            //dump($form->getData()["money"]);die();
 
             $accountSingle->setMoney((float)$form->getData()["money"] + $accountSingle ->getMoney());
 
