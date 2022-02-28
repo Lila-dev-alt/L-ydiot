@@ -111,12 +111,6 @@ class TransactionController extends AbstractController
                 $this->addFlash('danger', "Virement refusé: vous n'avez pas assez d'argent sur le compte");
             }
 
-            //securiser tout ça
-            //si montant plus grand que ce que on a
-            //annuler
-            //mettre ttout dans un controller dedier
-            //message pas de message en attete s'affiche deux fois
-
         }
         return $this->renderForm('demande/accept.html.twig', [
             'form' => $form,
