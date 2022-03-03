@@ -40,6 +40,7 @@ security:
          - { path: ^/register, roles: PUBLIC_ACCESS }
          - { path: ^/accounts, roles: ROLE_USER }
          - { path: ^/account/create, roles: ROLE_USER }
+         - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/, roles: PUBLIC_ACCESS }
         # - { path: ^/profile, roles: ROLE_USER }
 
