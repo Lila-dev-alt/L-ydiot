@@ -29,10 +29,6 @@ Créer la bdd en local :
 
 ``` php bin/console doctrine:database:create ```
 
-Créer un fichier de migrations :
-
-```php bin/console make:migration```
-
 Faire les migrations :
 
 ```php bin/console doctrine:migrations:migrate```
