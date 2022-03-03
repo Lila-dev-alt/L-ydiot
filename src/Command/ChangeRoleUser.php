@@ -42,7 +42,7 @@ class ChangeRoleUser extends Command
        $this->em->persist($user);
        $this->em->flush();
 
-        $output->writeln('Merci !');
+        $output->writeln("Vous avez bien changé le role de l'user");
 
         return Command::SUCCESS;
     }
