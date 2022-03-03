@@ -37,4 +37,7 @@ Enfin, lancer le serveur et inscrivez vous:
 
 ```symfony server:start -d```
 
+Mettre le role ADMIN a un utilisateur:
+
+```php bin/console app:change-role idUser```
 
